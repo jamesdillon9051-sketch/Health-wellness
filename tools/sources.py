@@ -113,7 +113,7 @@ def block(keys):
         nums[k] = i
         items.append('            <li id="source-%d">%s</li>' % (i, SOURCES[k]))
     html = (u'        <section class="sources" aria-labelledby="sources-heading">\n'
-            u'          <h2 id="sources-heading">Sources</h2>\n'
+            u'          <h2 id="sources-heading">Sources and further reading</h2>\n'
             u'          <ol>\n' + '\n'.join(items) + u'\n          </ol>\n'
             u'        </section>')
     return html, nums

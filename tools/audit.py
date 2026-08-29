@@ -22,7 +22,7 @@ def prose_of(s):
     return m.group(1) if m else ''
 
 def main():
-    problems, rows = [], []
+    problems, warnings, rows = [], [], []
     files = sorted(glob.glob(os.path.join(ROOT, 'posts', '*.html')))
 
     for f in files:
@@ -66,6 +66,19 @@ def main():
             problems.append('%s: missing BreadcrumbList schema' % slug)
         if briefs < 1:
             problems.append('%s: no image brief' % slug)
+
+        # Every footnote marker in the body must resolve to a listed source,
+        # and every listed source should be cited somewhere.
+        refs = set(int(n) for n in re.findall(r'href="#source-(\d+)"', prose))
+        listed = set(int(n) for n in re.findall(r'<li id="source-(\d+)"', s))
+        for n in sorted(refs - listed):
+            problems.append('%s: cites footnote %d but only %d sources listed'
+                            % (slug, n, len(listed)))
+        # Uncited entries are allowed — the list doubles as further reading —
+        # but a post where nothing at all is footnoted is worth flagging.
+        if listed and not refs:
+            warnings.append('%s: lists %d sources but footnotes none of them'
+                            % (slug, len(listed)))
         for tag in ('rel="canonical"', 'og:title', 'twitter:card', 'name="description"'):
             if tag not in s:
                 problems.append('%s: missing %s' % (slug, tag))
@@ -79,6 +92,10 @@ def main():
     print('\n%d of 100 posts written.' % len(rows))
     if rows:
         print('Average words: %d' % (sum(r[2] for r in rows) // len(rows)))
+    if warnings:
+        print('\n%d warning(s):' % len(warnings))
+        for w in warnings:
+            print('  ~ ' + w)
     if problems:
         print('\n%d problem(s):' % len(problems))
         for p in problems:
