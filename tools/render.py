@@ -293,3 +293,294 @@ def write(relpath, html):
         os.makedirs(d)
     io.open(full, 'w', encoding='utf-8').write(html)
     return relpath
+
+
+# ---------------------------------------------------------------- posts
+import json as _json
+from sources import block as sources_block
+
+PUBLISHED = '2026-08-29'
+PUB_HUMAN = '29 August 2026'
+
+
+def _plain(html):
+    """Strip tags and collapse whitespace, for schema text and word counts."""
+    t = re.sub(r'<script.*?</script>', ' ', html, flags=re.S)
+    t = re.sub(r'<!--.*?-->', ' ', t, flags=re.S)
+    t = re.sub(r'<[^>]+>', ' ', t)
+    t = (t.replace('&mdash;', '—').replace('&ndash;', '–').replace('&amp;', '&')
+          .replace('&ldquo;', '"').replace('&rdquo;', '"').replace('&rsquo;', "'")
+          .replace('&nbsp;', ' ').replace('&middot;', '·').replace('&hellip;', '…'))
+    return re.sub(r'\s+', ' ', t).strip()
+
+
+def _j(s):
+    """JSON string body without the surrounding quotes."""
+    return _json.dumps(_plain(s))[1:-1]
+
+
+def _insert_ad(body):
+    """Drop the in-content ad slot after the second paragraph."""
+    slot = ('\n\n        <!-- AD SLOT: in-content, after 2nd paragraph (336x280) -->\n'
+            '        <div class="ad-slot ad-slot--in-content" data-ad-slot="post-in-content-1"></div>\n')
+    parts = body.split('</p>')
+    if len(parts) > 3:
+        return '</p>'.join(parts[:2]) + '</p>' + slot + '</p>'.join(parts[2:])
+    return body + slot
+
+
+def _related_for(slug):
+    """Two siblings from the same pillar plus one cross-pillar bridge."""
+    me = POST_BY_SLUG[slug]
+    sibs = [p for p in in_pillar(me['pillar']) if p['slug'] != slug]
+    i = sibs.index(next(p for p in sibs if p['n'] > me['n'])) if any(p['n'] > me['n'] for p in sibs) else 0
+    picks = [sibs[i % len(sibs)], sibs[(i + 5) % len(sibs)]]
+    others = [p for p in POSTS if p['pillar'] != me['pillar']]
+    picks.append(others[(me['n'] * 7) % len(others)])
+    seen, out = set(), []
+    for p in picks:
+        if p['slug'] not in seen and p['slug'] != slug:
+            seen.add(p['slug']); out.append(p)
+    return out[:3]
+
+
+def post(slug, title_tag, description, lede, hero_alt, hero_brief, hero_caption,
+         toc, body, faq, source_keys, howto=None, related=None,
+         published=PUBLISHED, updated=PUBLISHED, updated_human=PUB_HUMAN):
+    from excerpts import EXCERPTS
+    meta = POST_BY_SLUG[slug]
+    pl = PILLAR_BY_KEY[meta['pillar']]
+    title = meta['title']
+    path = 'posts/%s.html' % slug
+    url = '%s/%s' % (DOMAIN, path)
+    img = '%s/assets/images/%s/%s-hero.jpg' % (DOMAIN, slug, slug)
+
+    src_html, _ = sources_block(source_keys)
+    body = _insert_ad(body)
+    # The FAQ is article text on the page, so it counts toward wordCount.
+    faq_text = ' '.join(q + ' ' + a for q, a in (faq or []))
+    words = len(_plain(body).split()) + len(_plain(faq_text).split())
+
+    # --- schema ----------------------------------------------------------
+    ld = ["""{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "%s",
+  "description": "%s",
+  "image": "%s",
+  "datePublished": "%s",
+  "dateModified": "%s",
+  "wordCount": %d,
+  "articleSection": "%s",
+  "inLanguage": "en-GB",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "%s" },
+  "author": {
+    "@type": "Person",
+    "name": "%s",
+    "url": "%s/about.html",
+    "description": "Home-training writer. Not a doctor, physiotherapist or certified strength coach."
+  },
+  "publisher": { "@type": "Organization", "name": "%s", "url": "%s/" }
+}""" % (_j(title), _j(description), img, published, updated, words,
+        _j(pl['name']), url, AUTHOR, DOMAIN, SITE, DOMAIN)]
+
+    if howto:
+        steps = ',\n'.join(
+            '    { "@type": "HowToStep", "position": %d, "name": "%s", "text": "%s" }'
+            % (i + 1, _j(n), _j(t)) for i, (n, t) in enumerate(howto['steps']))
+        ld.append("""{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "%s",
+  "description": "%s",
+  "totalTime": "%s",
+  "step": [
+%s
+  ]
+}""" % (_j(howto['name']), _j(howto['description']), howto.get('time', 'PT20M'), steps))
+
+    if faq:
+        qs = ',\n'.join(
+            '    {\n      "@type": "Question",\n      "name": "%s",\n'
+            '      "acceptedAnswer": { "@type": "Answer", "text": "%s" }\n    }'
+            % (_j(q), _j(a)) for q, a in faq)
+        ld.append('{\n  "@context": "https://schema.org",\n  "@type": "FAQPage",\n'
+                  '  "mainEntity": [\n%s\n  ]\n}' % qs)
+
+    ld.append("""{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "%s/" },
+    { "@type": "ListItem", "position": 2, "name": "%s", "item": "%s/categories/%s.html" },
+    { "@type": "ListItem", "position": 3, "name": "%s" }
+  ]
+}""" % (DOMAIN, _j(pl['name']), DOMAIN, pl['key'], _j(title)))
+
+    # --- fragments --------------------------------------------------------
+    toc_html = '\n'.join('          <li><a href="#%s">%s</a></li>' % (i, l) for i, l in toc)
+
+    faq_html = ''
+    if faq:
+        rows = '\n'.join(
+            '          <details>\n            <summary>%s</summary>\n            <p>%s</p>\n          </details>'
+            % (q, a) for q, a in faq)
+        faq_html = ('\n        <h2 id="faq">Frequently asked questions</h2>\n\n'
+                    '        <div class="faq">\n%s\n        </div>\n' % rows)
+
+    rel = related or [p['slug'] for p in _related_for(slug)]
+    rel_html = '\n'.join(u"""      <article class="card">
+        <div class="card__body">
+          <p class="eyebrow eyebrow--slate">{lab}</p>
+          <h3 class="card__title"><a href="{s}.html">{t}</a></h3>
+          <p class="card__excerpt">{e}</p>
+        </div>
+      </article>""".format(lab=PILLAR_BY_KEY[POST_BY_SLUG[s]['pillar']]['nav'],
+                           s=s, t=POST_BY_SLUG[s]['title'], e=EXCERPTS[s]) for s in rel)
+
+    side = [p for p in in_pillar(meta['pillar']) if p['slug'] != slug][:5]
+    side_html = '\n'.join('          <li><a href="%s.html">%s</a></li>' % (p['slug'], p['title'])
+                          for p in side)
+
+    enc = urllib_quote(url)
+    body_out = u"""
+<main id="main">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../categories/{pkey}.html">{pname}</a></li>
+        <li aria-current="page">{short}</li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="wrap post-layout">
+
+    <article class="post">
+
+      <header class="post-header">
+        <p class="eyebrow">{pname}</p>
+        <h1>{title}</h1>
+        <p class="lede">{lede}</p>
+
+        <div class="byline">
+          <span class="byline__avatar" aria-hidden="true">SR</span>
+          <span class="byline__text">
+            <strong>By <a href="../about.html">{author}</a></strong>
+            <span class="byline__dates">
+              Published <time datetime="{pub}">{pubh}</time>
+              &middot; Last updated <time datetime="{upd}">{updh}</time>
+            </span>
+          </span>
+        </div>
+      </header>
+
+      <figure class="post-hero">
+{brief}
+        <img src="../assets/images/{slug}/{slug}-hero.jpg"
+             alt="{alt}"
+             width="1200" height="630">
+        <figcaption>{cap}</figcaption>
+      </figure>
+
+      <nav class="toc" aria-labelledby="toc-heading">
+        <h2 id="toc-heading">What's in this guide</h2>
+        <ol>
+{toc}
+        </ol>
+      </nav>
+
+      <div class="prose">
+{body}
+{faq}
+{sources}
+
+        <div class="author-bio">
+          <span class="author-bio__avatar" aria-hidden="true">SR</span>
+          <div>
+            <h2>{author}</h2>
+            <p>{bio}</p>
+            <p><a href="../about.html">More about this site &rarr;</a></p>
+          </div>
+        </div>
+
+        <div class="share">
+          <span class="share__label">Share</span>
+          <button class="share__btn" type="button" data-share="native">Share&hellip;</button>
+          <button class="share__btn" type="button" data-share="copy">Copy link</button>
+          <a class="share__btn" href="https://www.facebook.com/sharer/sharer.php?u={enc}">Facebook</a>
+          <a class="share__btn" href="https://x.com/intent/tweet?url={enc}">X</a>
+          <a class="share__btn" href="https://pinterest.com/pin/create/button/?url={enc}">Pinterest</a>
+        </div>
+
+        <!-- Comment placeholder: drop in Disqus, Commento or Giscus here later. -->
+        <div class="comments-placeholder">
+          <h2>Comments</h2>
+          <p>Comments are not enabled yet. Add a hosted comment embed (Disqus, Commento, Giscus) inside this container when you are ready.</p>
+        </div>
+
+      </div><!-- /.prose -->
+    </article>
+
+    <aside class="post-sidebar" aria-label="Related content">
+      <div class="ad-slot ad-slot--sidebar" data-ad-slot="sidebar-rectangle"></div>
+
+      <div class="sidebar-block">
+        <h3>In this topic</h3>
+        <ul>
+{side}
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>Start here</h3>
+        <ul>
+          <li><a href="../categories/{pkey}.html">All {pnamep} guides</a></li>
+          <li><a href="../index.html">Homepage</a></li>
+          <li><a href="../about.html">About this site</a></li>
+        </ul>
+      </div>
+
+      <div class="ad-slot ad-slot--sidebar-tall" data-ad-slot="sidebar-skyscraper"></div>
+    </aside>
+
+  </div><!-- /.post-layout -->
+
+  <section class="section wrap related">
+    <div class="section-head">
+      <h2>Related reading</h2>
+      <a class="section-head__link" href="../categories/{pkey}.html">All {pnamep} &rarr;</a>
+    </div>
+
+    <div class="grid grid--3">
+{rel}
+    </div>
+  </section>
+{signup}
+</main>
+""".format(pkey=pl['key'], pname=pl['name'], pnamep=pl['name'].lower(),
+           short=(title[:44] + '…') if len(title) > 46 else title,
+           title=title, lede=lede, author=AUTHOR, bio=AUTHOR_BIO,
+           pub=published, pubh=PUB_HUMAN, upd=updated, updh=updated_human,
+           brief=hero_brief, slug=slug, alt=hero_alt, cap=hero_caption,
+           toc=toc_html, body=body, faq=faq_html, sources=src_html,
+           enc=enc, side=side_html, rel=rel_html,
+           signup=signup('email-' + slug))
+
+    html = (head(1, title_tag, description, path, og_image=img, og_type='article',
+                 jsonld=ld, published=published, updated=updated,
+                 extra_meta='<meta property="article:section" content="%s">' % pl['name'].replace('&amp;', '&'))
+            + header(1, active=pl['key']) + body_out + footer(1))
+    write(path, html)
+    return words
+
+
+try:
+    from urllib.parse import quote as _q
+except ImportError:
+    from urllib import quote as _q
+
+
+def urllib_quote(u):
+    return _q(u, safe='')
