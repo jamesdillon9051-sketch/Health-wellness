@@ -1,4 +1,4 @@
-# Six Square Feet
+# Health Wellness
 
 A static health & wellness blog. Plain HTML5, CSS3 and vanilla JS — no frameworks,
 no build step, no npm. Deploys by drag-and-drop to Netlify Drop, Hostinger file
@@ -35,8 +35,8 @@ site follows. Nothing downstream hardcodes a hex value.
 
 ## Before you launch — checklist
 
-- [ ] Replace `https://sixsquarefeet.com` with your real domain everywhere
-      (`grep -rl sixsquarefeet.com .`) — it appears in canonical tags, Open Graph
+- [ ] Replace `https://healthwellness.com` with your real domain everywhere
+      (`grep -rl healthwellness.com .`) — it appears in canonical tags, Open Graph
       URLs, JSON-LD and `sitemap.xml`.
 - [ ] Generate the images listed in `image-briefs.md` and drop them into
       `assets/images/<post-slug>/`.

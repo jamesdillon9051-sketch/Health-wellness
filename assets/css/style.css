@@ -14,23 +14,30 @@
    -------------------------------------------------------------------------- */
 :root {
   /* Colour ---------------------------------------------------------------- */
-  --paper:        #F4F1EA;   /* page background  — warm newsprint          */
-  --surface:      #FFFFFF;   /* cards, panels                              */
-  --surface-sunk: #EDE9DF;   /* insets, code, table stripes                */
-  --ink:          #17191C;   /* body text        — near black              */
-  --slate:        #2E3B45;   /* primary          — deep desaturated blue   */
-  --slate-deep:   #1F2930;   /* footer, inverted blocks                    */
-  --accent:       #E1492E;   /* accent           — vermilion / floor tape  */
-  --accent-deep:  #B8371F;   /* accent hover                               */
-  --accent-tint:  #FBEAE5;   /* accent wash for callouts                   */
-  --slate-tint:   #E7EDF0;   /* slate wash for callouts                    */
-  --muted:        #6E6A63;   /* meta text        — warm grey               */
-  --line:         #DDD7CB;   /* hairline rules                             */
-  --line-strong:  #C2BAA9;   /* emphasised rules                           */
+  /* Direction: "blueprint". The site is about floor space, so the palette
+     borrows the vernacular of an architectural plan — cool drafting paper,
+     navy ink, cobalt for anything interactive, and a surveyor's yellow used
+     sparingly as a mark rather than as a second accent. Contrast checked:
+     muted-on-paper 4.9:1, accent-on-white 7.0:1, highlight-on-hero 12.2:1. */
+  --paper:         #E9EDF1;  /* page background  — cool drafting paper     */
+  --surface:       #FFFFFF;  /* cards, panels                              */
+  --surface-sunk:  #DBE3E9;  /* insets, code, table stripes                */
+  --ink:           #0F1D28;  /* body text        — navy black              */
+  --slate:         #22384A;  /* primary          — deep navy               */
+  --slate-deep:    #0C1A24;  /* footer, inverted blocks                    */
+  --accent:        #2B4EC7;  /* accent           — cobalt                  */
+  --accent-deep:   #1E3899;  /* accent hover                               */
+  --accent-tint:   #E3E8FB;  /* accent wash for callouts                   */
+  --slate-tint:    #DBE4EB;  /* slate wash for callouts                    */
+  --highlight:     #F5D547;  /* surveyor's mark — never a text colour on
+                                light ground; fills and rules only          */
+  --muted:         #566875;  /* meta text        — cool grey               */
+  --line:          #C9D4DC;  /* hairline rules                             */
+  --line-strong:   #A5B4BF;  /* emphasised rules                           */
 
   /* Type ------------------------------------------------------------------ */
   --font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body:    'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-body:    'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --text-2xs:  0.6875rem;
   --text-xs:   0.75rem;
@@ -290,7 +297,7 @@ hr {
 .brand__mark {
   width: 1.5rem;
   height: 1.5rem;
-  background: var(--accent);
+  background: var(--highlight);
   flex: none;
   position: relative;
 }
@@ -391,7 +398,7 @@ hr {
   inset-inline: 0;
   bottom: 0;
   height: 6px;
-  background: var(--accent);
+  background: var(--highlight);
 }
 .hero__inner { position: relative; z-index: 1; max-width: 46rem; }
 .hero h1 {
@@ -400,7 +407,7 @@ hr {
   font-weight: 800;
   margin-top: var(--space-s);
 }
-.hero h1 em { font-style: normal; color: var(--accent); }
+.hero h1 em { font-style: normal; color: var(--highlight); }
 .hero p:not(.eyebrow) {
   color: rgba(255,255,255,0.78);
   font-size: var(--text-lg);
@@ -410,6 +417,7 @@ hr {
 /* On the dark hero the accent does not have the contrast to carry a label,
    so the text goes light and the marker square keeps the accent. */
 .hero .eyebrow { color: rgba(255,255,255,0.72); }
+.hero .eyebrow::before { background: var(--highlight); }
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -601,7 +609,7 @@ hr {
   background: var(--slate);
   color: #fff;
   padding: var(--space-xl) var(--gutter);
-  border-top: 6px solid var(--accent);
+  border-top: 6px solid var(--highlight);
 }
 .signup__inner { max-width: 38rem; margin-inline: auto; text-align: center; }
 .signup h2 { color: #fff; font-size: var(--text-2xl); font-weight: 800; }
@@ -968,7 +976,7 @@ hr {
   gap: var(--space-m);
   background: var(--surface);
   border: var(--rule);
-  border-top: 4px solid var(--accent);
+  border-top: 4px solid var(--highlight);
   padding: var(--space-m);
   margin-top: var(--space-xl);
 }

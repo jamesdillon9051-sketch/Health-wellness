@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Contact | Health Wellness</title>
+<meta name="description" content="Send a correction, ask about a post, or suggest a topic. Every message is read and most get a reply.">
+<link rel="canonical" href="https://healthwellness.com/contact.html">
+<meta name="theme-color" content="#0C1A24">
+<meta name="author" content="Sam Reyes">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Health Wellness">
+<meta property="og:title" content="Contact | Health Wellness">
+<meta property="og:description" content="Send a correction, ask about a post, or suggest a topic. Every message is read and most get a reply.">
+<meta property="og:url" content="https://healthwellness.com/contact.html">
+<meta property="og:image" content="https://healthwellness.com/assets/images/site/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact | Health Wellness">
+<meta name="twitter:description" content="Send a correction, ask about a post, or suggest a topic. Every message is read and most get a reply.">
+<meta name="twitter:image" content="https://healthwellness.com/assets/images/site/og-default.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js" defer></script>
+
+
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===== SHARED HEADER — keep identical across all pages ===== -->
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__name">Health Wellness</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="categories/bodyweight-strength.html">Bodyweight</a></li>
+        <li><a class="nav__link" href="categories/quick-workouts.html">Quick Workouts</a></li>
+        <li><a class="nav__link" href="categories/small-space-training.html">Small Space</a></li>
+        <li><a class="nav__link" href="categories/minimal-gear.html">Gear</a></li>
+        <li><a class="nav__link" href="categories/habits-recovery.html">Habits</a></li>
+        <li><a class="nav__link" href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+    <ul class="mobile-nav__list">
+      <li><a class="mobile-nav__link" href="categories/bodyweight-strength.html">Bodyweight Strength</a></li>
+      <li><a class="mobile-nav__link" href="categories/quick-workouts.html">Quick Workouts &amp; Plans</a></li>
+      <li><a class="mobile-nav__link" href="categories/small-space-training.html">Small-Space Training</a></li>
+      <li><a class="mobile-nav__link" href="categories/minimal-gear.html">Minimal Gear</a></li>
+      <li><a class="mobile-nav__link" href="categories/habits-recovery.html">Habits &amp; Recovery</a></li>
+      <li><a class="mobile-nav__link" href="about.html">About</a></li>
+      <li><a class="mobile-nav__link" href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<!-- ===== /SHARED HEADER ===== -->
+
+<main id="main">
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow eyebrow--slate">Contact</p>
+      <h1>Get in touch</h1>
+      <p class="lede">Corrections, questions, or a workout that did not work the way the post said it would &mdash; all genuinely welcome.</p>
+    </header>
+  </div>
+
+  <div class="wrap wrap--narrow">
+    <div class="prose" style="margin-top:var(--space-xl)">
+
+      <p>I read everything. I reply to most of it, though sometimes slowly.</p>
+
+      <p><strong>Corrections get priority.</strong> If a post cites something wrong, links somewhere dead, or gives a cue that does not hold up, say so and I will fix the post itself rather than quietly leaving it.</p>
+
+      <div class="callout callout--warn">
+        <span class="callout__label">One thing I cannot help with</span>
+        <p>I am not a clinician, so I cannot advise on injuries, pain, medication or any diagnosed condition &mdash; not even informally. Those questions need a doctor or a physiotherapist who can actually examine you. Please do not send me symptoms to interpret.</p>
+      </div>
+
+      <!-- This is a static site with no server, so the form needs a third-party
+           backend. Sign up at formspree.io (or basin, or Netlify Forms), then
+           replace the action URL below with the endpoint they give you. -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="margin-top:var(--space-xl)">
+        <div class="form-field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="subject">What is this about?</label>
+          <select id="subject" name="subject">
+            <option>A correction</option>
+            <option>A question about a post</option>
+            <option>Suggest a topic</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button class="btn btn--accent btn--block" type="submit">Send message</button>
+        <p class="form-note" style="margin-top:var(--space-s)">
+          Your details go to the form provider and to me, and nowhere else. See the
+          <a href="privacy-policy.html">privacy policy</a> for what that means in practice.
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+  <section class="signup signup--inline">
+    <div class="signup__inner">
+      <h2>Get one workout a week</h2>
+      <p>A session you can do in your living room, plus one thing worth reading. Nothing else.</p>
+      <form class="signup__form" data-placeholder action="#" method="post">
+        <label class="visually-hidden" for="email-contact">Email address</label>
+        <input type="email" id="email-contact" name="email" placeholder="you@example.com" required autocomplete="email">
+        <button class="btn btn--accent" type="submit">Send it</button>
+      </form>
+      <p class="signup__note">No spam. Unsubscribe in one click.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== SHARED FOOTER — keep identical across all pages ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+
+    <div class="ad-slot ad-slot--footer" data-ad-slot="footer-leaderboard"></div>
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__name">Health Wellness</span>
+        </a>
+        <p>Home strength training for people with no gym, no commute time and no patience for fitness industry nonsense. Written by one person, tested in one small flat.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Topics</h3>
+        <ul>
+          <li><a href="categories/bodyweight-strength.html">Bodyweight Strength</a></li>
+          <li><a href="categories/quick-workouts.html">Quick Workouts &amp; Plans</a></li>
+          <li><a href="categories/small-space-training.html">Small-Space Training</a></li>
+          <li><a href="categories/minimal-gear.html">Minimal Gear</a></li>
+          <li><a href="categories/habits-recovery.html">Habits &amp; Recovery</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="medical-disclaimer.html">Medical Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer-disclaimer">
+      <strong>Medical disclaimer:</strong> The content on Health Wellness is for general informational
+      and educational purposes only. It is not medical advice and is not a substitute for
+      professional diagnosis, treatment or care from a qualified healthcare provider. Always speak
+      to your doctor or a licensed clinician before starting a new exercise programme, particularly
+      if you are pregnant, recovering from injury or illness, or managing an existing health
+      condition. Never disregard professional medical advice or delay seeking it because of
+      something you have read here.
+      <a href="medical-disclaimer.html">Read the full disclaimer</a>.
+    </p>
+
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Health Wellness. All rights reserved.</span>
+      <span>Built as a static site. No trackers beyond basic analytics.</span>
+    </div>
+  </div>
+</footer>
+<!-- ===== /SHARED FOOTER ===== -->
+
+<button class="to-top" type="button" aria-label="Back to top">&uarr;</button>
+
+</body>
+</html>

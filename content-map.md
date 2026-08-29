@@ -1,4 +1,4 @@
-# Six Square Feet — 100-Post Content Map
+# Health Wellness — 100-Post Content Map
 
 **Niche:** Home workouts for people with no gym access and limited time — busy professionals and parents.
 **Reader:** A 34-year-old with a full-time job, a small flat, no gym membership, and about 20 minutes of usable time.
