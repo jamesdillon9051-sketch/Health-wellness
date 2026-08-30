@@ -72,10 +72,16 @@ share image), then `<post-slug>-01.jpg`, `-02.jpg` and so on for in-content imag
 **Palette to match** — cool drafting ground `#E9EDF1`, navy `#22384A`,
 cobalt `#2B4EC7`, surveyor's yellow `#F5D547` used sparingly.
 
-**Total images needed: %d** across %d pages.
+**Total images needed: %d unique files** across %d pages. (The homepage reuses
+ten post heroes, so there are more `<img>` tags than files to source.)
+
+**Placeholders are already in place.** Every path below currently holds a
+generated blueprint placeholder stamped with its own brief, so the site renders
+complete. Replace a file to publish the real photograph — no HTML edit needed.
+Regenerate them any time with `python3 tools/make_placeholders.py`.
 
 ---
-""" % (R.SITE, len(rows), len(by_post))]
+""" % (R.SITE, len(set(r[1] for r in rows)), len(by_post))]
 
 for slug in sorted(by_post):
     meta = R.POST_BY_SLUG.get(slug)
@@ -91,4 +97,4 @@ for slug in sorted(by_post):
 R.write('image-briefs.md', ''.join(lines))
 print('sitemap.xml : %d URLs' % len(urls))
 print('robots.txt  : written')
-print('image-briefs: %d images across %d pages' % (len(rows), len(by_post)))
+print('image-briefs: %d unique images across %d pages' % (len(set(r[1] for r in rows)), len(by_post)))

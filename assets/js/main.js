@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIX SQUARE FEET — main.js
+   HEALTH WELLNESS — main.js
    Vanilla JS, no dependencies. Loaded with `defer` on every page.
    Every feature is progressive enhancement: the site works fully without it.
    ========================================================================== */
@@ -127,18 +127,8 @@
     }
   });
 
-  /* --- 8. Email signup placeholder ----------------------------------------
-     No email service is wired up yet. Until you connect one (ConvertKit,
-     Buttondown, Mailchimp, Beehiiv), intercept the submit so nothing is lost
-     silently. Delete this block once the form `action` points at a real
-     endpoint.
+  /* --- 8. Forms -----------------------------------------------------------
+     Contact and signup submission now lives in assets/js/forms.js, driven by
+     the IDs in assets/js/config.js.
      ------------------------------------------------------------------------ */
-  var forms = document.querySelectorAll('.signup__form[data-placeholder]');
-  Array.prototype.forEach.call(forms, function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var note = form.parentNode.querySelector('.signup__note');
-      if (note) note.textContent = 'Signup is not connected yet — add your email service endpoint to this form.';
-    });
-  });
 })();

@@ -12,7 +12,13 @@ share image), then `<post-slug>-01.jpg`, `-02.jpg` and so on for in-content imag
 **Palette to match** — cool drafting ground `#E9EDF1`, navy `#22384A`,
 cobalt `#2B4EC7`, surveyor's yellow `#F5D547` used sparingly.
 
-**Total images needed: 113** across 101 pages.
+**Total images needed: 103 unique files** across 101 pages. (The homepage reuses
+ten post heroes, so there are more `<img>` tags than files to source.)
+
+**Placeholders are already in place.** Every path below currently holds a
+generated blueprint placeholder stamped with its own brief, so the site renders
+complete. Replace a file to publish the real photograph — no HTML edit needed.
+Regenerate them any time with `python3 tools/make_placeholders.py`.
 
 ---
 

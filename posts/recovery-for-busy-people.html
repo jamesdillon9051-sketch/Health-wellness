@@ -31,7 +31,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script src="../assets/js/config.js"></script>
 <script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/forms.js" defer></script>
+<script src="../assets/js/ads.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -527,10 +530,12 @@
     <div class="signup__inner">
       <h2>Get one workout a week</h2>
       <p>A session you can do in your living room, plus one thing worth reading. Nothing else.</p>
-      <form class="signup__form" data-placeholder action="#" method="post">
+      <form class="signup__form" data-form="signup" action="#" method="post">
         <label class="visually-hidden" for="email-recovery-for-busy-people">Email address</label>
         <input type="email" id="email-recovery-for-busy-people" name="email" placeholder="you@example.com" required autocomplete="email">
         <button class="btn btn--accent" type="submit">Send it</button>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="visually-hidden">
+        <p class="form-status" role="status" aria-live="polite" hidden></p>
       </form>
       <p class="signup__note">No spam. Unsubscribe in one click.</p>
     </div>

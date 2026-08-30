@@ -35,26 +35,69 @@ site follows. Nothing downstream hardcodes a hex value.
 
 ## Before you launch — checklist
 
-- [ ] Replace `https://healthwellness.com` with your real domain everywhere
-      (`grep -rl healthwellness.com .`) — it appears in canonical tags, Open Graph
-      URLs, JSON-LD and `sitemap.xml`.
-- [ ] Generate the images listed in `image-briefs.md` and drop them into
-      `assets/images/<post-slug>/`.
-- [ ] Point the email signup `<form action>` at a real service, then delete the
-      `data-placeholder` attribute (and the block in `main.js` that intercepts it).
-- [ ] Point the contact form at Formspree / Basin / Netlify Forms.
-- [ ] Inject your AdSense or Monetag script into the `.ad-slot` divs. They are
-      empty containers with `data-ad-slot` names — no ad network code is hardcoded.
-- [ ] Re-check every external citation link still resolves before publishing.
-- [ ] Submit `sitemap.xml` in Google Search Console.
+Everything that could be done without an account of yours has been done. What is
+left needs a value only you have — each is one edit, not a hunt through 111 files.
+
+- [ ] **Point it at your domain.** One command rewrites all 1,279 occurrences
+      across canonical tags, Open Graph and Twitter URLs, JSON-LD `@id` fields,
+      `sitemap.xml` and `robots.txt`:
+
+      python3 tools/set_domain.py https://yourdomain.com
+
+      Add `--dry` to preview. Re-runnable if you ever move domains.
+
+- [ ] **Connect the forms.** Create two forms at
+      [formspree.io](https://formspree.io) (free tier is fine), then paste the
+      two IDs into `assets/js/config.js`. Both the contact form and all 108
+      signup blocks pick them up — no per-page editing. Until you do, both say
+      so on screen rather than silently dropping what someone typed.
+
+- [ ] **Switch on ads** (optional). Put your AdSense publisher ID and four slot
+      IDs into the same `config.js`. Any zone you leave empty renders nothing at
+      all, so an unmonetised site still looks finished. `?ads=debug` on any URL
+      shows the slots while you are designing.
+
+- [ ] **Replace the placeholder images.** All 103 are generated and in place, so
+      the site renders complete today. Each is stamped with its own brief;
+      `image-briefs.md` lists every one. Overwrite a file with the real
+      photograph at the same path — no HTML edit needed.
+
+- [ ] **Re-read the citations.** `python3 tools/citecheck.py` prints all 275
+      footnoted claims beside their sources and flags pairings worth a second
+      look. It currently flags none, but that is triage, not proof — on a health
+      site the human read is the one that counts.
+
+- [ ] **Submit the sitemap.** Verify the domain in
+      [Google Search Console](https://search.google.com/search-console), then
+      submit `sitemap.xml` (110 URLs, validated). Bing Webmaster Tools accepts
+      the same file.
+
+## Tools
+
+None of these are needed to run the site — it is plain HTML with no build step.
+They exist to keep the hand-copied blocks honest.
+
+```
+tools/set_domain.py        rewrite the site's domain everywhere, in one pass
+tools/make_placeholders.py regenerate the blueprint placeholder images
+tools/audit.py             word counts, link minimums, JSON-LD, meta tags
+tools/linkcheck.py         every internal href and #anchor resolves
+tools/citecheck.py         every footnoted claim printed beside its source
+tools/check-sync.sh        the four hand-copied blocks are identical everywhere
+tools/build_site_files.py  regenerate sitemap.xml, robots.txt, image-briefs.md
+tools/wire_services.py     re-wire config/forms/ads scripts into every page
+```
 
 ## Structure
 
 ```
 /                     index, about, contact, privacy-policy, medical-disclaimer, 404
 /assets/css/          style.css — the whole design system
-/assets/js/           main.js — nav, TOC highlight, share, progress bar
-/assets/images/       one folder per post slug
+/assets/js/           config.js — THE ONE FILE YOU EDIT to connect services
+                      main.js   — nav, TOC highlight, share, progress bar
+                      forms.js  — contact + signup submission
+                      ads.js    — fills the .ad-slot divs from config.js
+/assets/images/       one folder per post slug (placeholders in place)
 /categories/          5 pillar landing pages
 /posts/               100 post files
 content-map.md        the 100-post plan

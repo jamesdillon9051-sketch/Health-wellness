@@ -1,0 +1,10 @@
+# Python bytecode from the tools/ scripts — never part of the site
+__pycache__/
+*.pyc
+
+# Written by tools/set_domain.py to remember the current domain
+tools/.domain
+
+# OS cruft that must not reach a deployed folder
+.DS_Store
+Thumbs.db

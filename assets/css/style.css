@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIX SQUARE FEET — Design System
+   HEALTH WELLNESS — Design System
    Home training for people with no gym and no spare time.
 
    Visual direction: "field manual". Warm paper ground, heavy industrial
@@ -613,7 +613,7 @@ hr {
 }
 .signup__inner { max-width: 38rem; margin-inline: auto; text-align: center; }
 .signup h2 { color: #fff; font-size: var(--text-2xl); font-weight: 800; }
-.signup p { color: rgba(255,255,255,0.75); margin-top: var(--space-s); }
+.signup p:not(.form-status) { color: rgba(255,255,255,0.75); margin-top: var(--space-s); }
 .signup__form {
   display: flex;
   flex-wrap: wrap;
@@ -659,6 +659,9 @@ hr {
   text-transform: uppercase;
   overflow: hidden;
 }
+/* `display:flex` above outranks the UA rule for [hidden], so ads.js could
+   not hide an unconfigured slot without this. */
+.ad-slot[hidden] { display: none !important; }
 .ad-slot::before { content: "Advertisement"; }
 .ad-slot:not(:empty)::before { content: none; }
 .ad-slot--leaderboard { width: 100%; max-width: 728px; min-height: 90px; margin-block: var(--space-m); }
@@ -666,6 +669,22 @@ hr {
 .ad-slot--sidebar     { width: 100%; max-width: 300px; min-height: 250px; margin-block: var(--space-m); }
 .ad-slot--sidebar-tall { width: 100%; max-width: 300px; min-height: 600px; margin-block: var(--space-m); }
 .ad-slot--footer      { width: 100%; max-width: 728px; min-height: 90px; margin-block: var(--space-l); }
+
+/* Form status messages — written by assets/js/forms.js, announced politely. */
+.form-status {
+  margin-top: var(--space-s);
+  padding: var(--space-xs) var(--space-s);
+  border-left: 3px solid var(--line-strong);
+  background: var(--surface-sunk);
+  color: var(--slate);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+.form-status.is-ok    { border-left-color: var(--accent); background: var(--accent-tint); color: var(--accent-deep); }
+.form-status.is-error { border-left-color: var(--highlight); }
+.form-status.is-busy  { color: var(--muted); }
+.signup__form .form-status,
+form[data-form] .form-status { flex-basis: 100%; }
 
 /* --------------------------------------------------------------------------
    12. FOOTER

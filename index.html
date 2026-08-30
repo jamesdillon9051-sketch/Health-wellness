@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ==========================================================================
-     SIX SQUARE FEET — Homepage
+     HEALTH WELLNESS — Homepage
      NOTE: replace https://healthwellness.com throughout the site with your real
      domain before launch (canonical tags, Open Graph URLs, sitemap.xml).
      ========================================================================== -->
@@ -36,7 +36,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/config.js"></script>
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/forms.js" defer></script>
+<script src="assets/js/ads.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -367,10 +370,12 @@
       <p>One session you can do in your living room, one thing worth reading, and nothing else. No 47-part "transformation" funnel.</p>
       <!-- Static markup only. Point `action` at your email service (ConvertKit,
            Buttondown, Mailchimp) and delete data-placeholder to go live. -->
-      <form class="signup__form" data-placeholder action="#" method="post">
+      <form class="signup__form" data-form="signup" action="#" method="post">
         <label class="visually-hidden" for="email-home">Email address</label>
         <input type="email" id="email-home" name="email" placeholder="you@example.com" required autocomplete="email">
         <button class="btn btn--accent" type="submit">Send it</button>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="visually-hidden">
+        <p class="form-status" role="status" aria-live="polite" hidden></p>
       </form>
       <p class="signup__note">No spam. Unsubscribe in one click.</p>
     </div>
