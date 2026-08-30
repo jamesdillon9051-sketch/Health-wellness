@@ -92,6 +92,13 @@ SOURCES = {
     'Performance and Recovery: A Systematic Review of Current Approaches.&rdquo; '
     '<em>Sports Medicine</em>, 2018;48(3):683&ndash;703.'),
 
+ # --- behaviour and habit formation --------------------------------------
+ 'lally-habit':
+    'Lally P, van Jaarsveld CHM, Potts HWW, Wardle J. &ldquo;How are habits formed: '
+    'Modelling habit formation in the real world.&rdquo; <em>European Journal of Social '
+    'Psychology</em>, 2010;40(6):998&ndash;1009. '
+    '<a href="https://doi.org/10.1002/ejsp.674">doi:10.1002/ejsp.674</a>.',
+
  # --- conditioning --------------------------------------------------------
  'wu-hiit': _pm('33836261',
     'Wu ZJ, Wang ZY, Gao HE, Zhou XF, Li FH. &ldquo;Impact of high-intensity interval training on '
