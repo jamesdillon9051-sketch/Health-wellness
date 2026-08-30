@@ -30,6 +30,13 @@ for f in $files; do
   grep -q 'og:title' "$f" || msg="$msg  missing Open Graph tags\n"
 
   # Link depth must match directory depth
+  # every post and category page must declare which of the five section
+  # colours it uses, or it silently falls back to the house accent
+  case "$f" in
+    ./posts/*|./categories/*)
+      grep -q '<body data-pillar="' "$f" || msg="$msg  missing data-pillar on <body>\n" ;;
+  esac
+
   case "$f" in
     ./posts/*|./categories/*)
       grep -q 'href="../assets/css/style.css"' "$f" || msg="$msg  wrong CSS path (needs ../)\n"

@@ -193,6 +193,7 @@ def build():
         cap = cap if len(cap) <= 92 else cap[:90].rstrip(' ,;') + '…'
         title = short_title(meta['title'])
         eb = PILLAR_LABEL[pillar]
+        F.set_pillar(pillar)   # diagram lands in its section's colour
         sessions = 3
         if spec[0] == 'week':
             n = 3
@@ -218,27 +219,34 @@ def build():
 # The three in-content diagrams, whose briefs call for something other than a
 # hero. Labels come from the posts' own exercise lists.
 def extras():
-    return [
-     (C.three_panel(
+    """The three in-content diagrams. Built one at a time because they span two
+    pillars, and set_pillar mutates the palette for whatever is composed next."""
+    out = []
+
+    F.set_pillar('bodyweight-strength')
+    out.append((C.three_panel(
         'Push-Up Form: One Right, Two Wrong', 'Bodyweight strength',
         'The fault is almost always at the hips, not the arms.',
         [('pushup-sag', 'hips sag', False),
          ('pushup-top', 'straight line', True),
          ('pushup-pike', 'hips piked', False)]),
-      'assets/images/perfect-push-up-form/perfect-push-up-form-01.jpg', 1200, 800),
-     (C.exercise_grid(
+        'assets/images/perfect-push-up-form/perfect-push-up-form-01.jpg', 1200, 800))
+
+    F.set_pillar('quick-workouts')
+    out.append((C.exercise_grid(
         'The Six Movements, In Order', 'Quick workouts',
         'Forty seconds of work, twenty seconds to change position, twice through.',
         [('squat-bot', 'Bodyweight squat'), ('pushup-top', 'Push-up'),
          ('lunge', 'Reverse lunge'), ('bridge', 'Glute bridge'),
          ('plank', 'Plank shoulder tap'), ('dead-bug', 'Dead bug')]),
-      'assets/images/15-minute-full-body-workout/15-minute-full-body-workout-01.jpg', 1200, 800),
-     (C.week_grid(
+        'assets/images/15-minute-full-body-workout/15-minute-full-body-workout-01.jpg', 1200, 800))
+
+    out.append((C.week_grid(
         'Where the Session Fits', 'Quick workouts',
         'Three sessions, the rest of the week walking or resting.',
         sessions=3, note='rest days are not wasted days', w=1200, h=800),
-      'assets/images/15-minute-full-body-workout/15-minute-full-body-workout-02.jpg', 1200, 800),
-    ]
+        'assets/images/15-minute-full-body-workout/15-minute-full-body-workout-02.jpg', 1200, 800))
+    return out
 
 
 if __name__ == '__main__':

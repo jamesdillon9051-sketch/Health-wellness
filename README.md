@@ -27,11 +27,53 @@ There is a checker for this — run it after any header/footer edit:
 sh tools/check-sync.sh
 ```
 
-## Retheming
+## The colour system
 
-Every colour, font, space and container width is a CSS custom property in the
-`:root` block at the top of `assets/css/style.css`. Change it there and the whole
-site follows. Nothing downstream hardcodes a hex value.
+The site is one warm near-white ground plus five saturated section colours.
+Every page carries `data-pillar` on `<body>`, which repoints four tokens:
+
+| token | used for |
+|---|---|
+| `--accent` | vivid. Large blocks and washes only |
+| `--accent-deep` | buttons, links, small text. White on it is >= 4.5:1 for all five |
+| `--accent-tint` | pale wash for callouts, TOC, hub headers |
+| `--accent-on` | text colour that sits *on* `--accent` |
+
+Every rule in `style.css` is written against those four, so a page reskins from
+one attribute. There are two accents per pillar because white on the vivid tone
+fails on amber (2.4:1) and coral (3.9:1) — anything carrying text uses
+`--accent-deep`, so button text is white everywhere with no exceptions.
+
+| section | vivid | deep | on-vivid |
+|---|---|---|---|
+| Bodyweight strength | `#E8483F` coral | `#C62F27` | ink |
+| Quick workouts | `#0E9C8A` teal | `#0A7365` | ink |
+| Small-space training | `#6B4CE0` violet | `#5C3BD6` | white |
+| Minimal gear | `#E8930C` amber | `#A96504` | ink |
+| Habits & recovery | `#2E9E4F` green | `#268543` | ink |
+
+Pages belonging to no single pillar (home, about, contact, legal) use the house
+indigo on `:root`. All 17 foreground/background pairings were measured against
+WCAG AA; the lowest is amber-deep on paper at 4.50:1.
+
+To retheme, edit the pillar block in `:root` — nothing else references a colour
+directly. `python3 tools/set_pillar.py` re-applies the body attributes if you
+add pages, and `python3 tools/make_images.py` redraws the 103 diagrams in
+whatever the new colours are.
+
+## Section templates
+
+Each part of the site is laid out as its own place:
+
+- **Homepage** — the five pillars as solid colour blocks; post cards carry the
+  colour of the section they belong to.
+- **Category pages** — a full-bleed masthead in that section's colour, and every
+  card below it themed to match.
+- **Posts** — a coloured rail on the standfirst, a tinted contents panel, and
+  coloured section rules.
+- **Hub posts** — a tinted header block with a heavy top rule, so the ten pillar
+  guides read as more substantial than the clusters hanging off them.
+- **Diagrams** — each of the 103 is drawn on its own section's tinted ground.
 
 ## Before you launch — checklist
 

@@ -9,10 +9,30 @@ Coordinates are a 0-100 square; `box()` maps that into the image. Side-on view
 throughout, the way a printed exercise manual draws it.
 """
 
-PAPER, INK, NAVY = '#E9EDF1', '#0F1D28', '#22384A'
-ACCENT, YELLOW = '#2B4EC7', '#F5D547'
-LINE, LINE_STRONG, MUTED = '#C9D4DC', '#A5B4BF', '#566875'
-FAR = '#8FA3B4'          # limbs on the far side of the body
+# The palette is module-level and swapped per image by set_pillar(), so a
+# diagram lands in the same colour as the section it belongs to.
+PAPER, INK, NAVY = '#FDFCFA', '#14161A', '#14161A'
+ACCENT, YELLOW = '#3A32A8', '#FFC933'
+LINE, LINE_STRONG, MUTED = '#E5E1D9', '#C7C1B6', '#5E646D'
+FAR = '#A7A29A'          # limbs on the far side of the body
+
+PILLAR_COLOURS = {
+ 'bodyweight-strength':  ('#C62F27', '#FDECEA'),
+ 'quick-workouts':       ('#0A7365', '#E3F5F2'),
+ 'small-space-training': ('#5C3BD6', '#EDE8FD'),
+ 'minimal-gear':         ('#A96504', '#FDF0DC'),
+ 'habits-recovery':      ('#268543', '#E6F5EA'),
+}
+
+
+def set_pillar(name):
+    """Point ACCENT and the paper ground at one section's colour.
+
+    Called once per image before composing. The deep tone is used rather than
+    the vivid one because these marks are small on a light ground.
+    """
+    global ACCENT, PAPER
+    ACCENT, PAPER = PILLAR_COLOURS.get(name, ('#3A32A8', '#FDFCFA'))
 
 # --- poses -----------------------------------------------------------------
 # Joints: head (centre), neck, shoulder, elbow, wrist, hip, knee, ankle, toe.
@@ -166,8 +186,15 @@ def figure(name, box, stroke=9, bb=None):
 
 
 # --- scene -----------------------------------------------------------------
+def tuple_blend(a, b, t):
+    """Mix two hex colours, so the grid tints with whatever paper is set."""
+    pa = [int(a.lstrip('#')[i:i+2], 16) for i in (0, 2, 4)]
+    pb = [int(b.lstrip('#')[i:i+2], 16) for i in (0, 2, 4)]
+    return '#%02X%02X%02X' % tuple(round(x + (y - x) * t) for x, y in zip(pa, pb))
+
+
 def grid(w, h, minor=32, major=160):
-    faint = '#DFE5EB'
+    faint = tuple_blend(PAPER, LINE, 0.55)
     out = ['<rect width="%d" height="%d" fill="%s"/>' % (w, h, PAPER)]
     for x in range(0, w, minor):
         out.append('<line x1="%d" y1="0" x2="%d" y2="%d" stroke="%s"/>' % (x, x, h, faint))
@@ -203,7 +230,8 @@ def ground(box, extra=40, pose=None, bb=None):
             % (x0 - extra, y, x0 + w + extra, y, LINE_STRONG))
 
 
-def arrow(x1, y1, x2, y2, colour=ACCENT, w=4, dash=False):
+def arrow(x1, y1, x2, y2, colour=None, w=4, dash=False):
+    colour = colour or ACCENT
     d = ' stroke-dasharray="9 7"' if dash else ''
     return ('<defs><marker id="a%d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" '
             'markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="%s"/></marker></defs>'
@@ -213,7 +241,8 @@ def arrow(x1, y1, x2, y2, colour=ACCENT, w=4, dash=False):
                abs(hash((x1, y1, x2, y2))) % 99999))
 
 
-def label(x, y, text, size=21, colour=NAVY, weight=600, anchor='start', mono=False):
+def label(x, y, text, size=21, colour=None, weight=600, anchor='start', mono=False):
+    colour = colour or NAVY
     fam = ("'IBM Plex Mono','DejaVu Sans Mono',monospace" if mono
            else "'Instrument Sans','Archivo','DejaVu Sans',system-ui,sans-serif")
     return ('<text x="%.0f" y="%.0f" font-family="%s" font-size="%d" font-weight="%d" '

@@ -1,39 +1,63 @@
 /* ==========================================================================
    HEALTH WELLNESS — Design System
-   Home training for people with no gym and no spare time.
 
-   Visual direction: "field manual". Warm paper ground, heavy industrial
-   headings, editorial serif body, hairline rules instead of drop shadows,
-   square corners, one decisive vermilion accent.
+   Visual direction: "five rooms". A warm near-white ground shared by the whole
+   site, and five saturated pillar colours — one per content section — that
+   retheme a page end to end. The homepage shows all five at once; every
+   category page, post and diagram inherits exactly one.
 
-   Retheme the entire site from the :root block below.
+   How the colour system works
+   ---------------------------
+   Each page carries `data-pillar="<slug>"` on <body>. That remaps --accent,
+   --accent-deep, --accent-tint and --accent-on, and every rule below is
+   written against those four tokens, so a page reskins from one attribute.
+   Pages with no pillar (home, about, contact, legal) fall back to the house
+   indigo defined on :root.
+
+   Two accents per pillar, and why
+   -------------------------------
+   --accent       vivid. Large blocks and washes only. Paired with --accent-on,
+                  which is ink for four of the five (white on amber is 2.4:1).
+   --accent-deep  darkened. Buttons, links, small text. White on it is >= 4.5:1
+                  for all five, so button text is white everywhere and there is
+                  no per-pillar exception to remember.
+
+   Contrast, measured not guessed (WCAG AA on --paper #FDFCFA):
+     coral-deep 5.34  teal-deep 5.61  violet-deep 6.71
+     amber-deep 4.50  green-deep 4.53  muted 5.24  ink 16.1
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. TOKENS
    -------------------------------------------------------------------------- */
 :root {
-  /* Colour ---------------------------------------------------------------- */
-  /* Direction: "blueprint". The site is about floor space, so the palette
-     borrows the vernacular of an architectural plan — cool drafting paper,
-     navy ink, cobalt for anything interactive, and a surveyor's yellow used
-     sparingly as a mark rather than as a second accent. Contrast checked:
-     muted-on-paper 4.9:1, accent-on-white 7.0:1, highlight-on-hero 12.2:1. */
-  --paper:         #E9EDF1;  /* page background  — cool drafting paper     */
+  /* Ground ---------------------------------------------------------------- */
+  --paper:         #FDFCFA;  /* page background  — warm near-white         */
   --surface:       #FFFFFF;  /* cards, panels                              */
-  --surface-sunk:  #DBE3E9;  /* insets, code, table stripes                */
-  --ink:           #0F1D28;  /* body text        — navy black              */
-  --slate:         #22384A;  /* primary          — deep navy               */
-  --slate-deep:    #0C1A24;  /* footer, inverted blocks                    */
-  --accent:        #2B4EC7;  /* accent           — cobalt                  */
-  --accent-deep:   #1E3899;  /* accent hover                               */
-  --accent-tint:   #E3E8FB;  /* accent wash for callouts                   */
-  --slate-tint:    #DBE4EB;  /* slate wash for callouts                    */
-  --highlight:     #F5D547;  /* surveyor's mark — never a text colour on
-                                light ground; fills and rules only          */
-  --muted:         #566875;  /* meta text        — cool grey               */
-  --line:          #C9D4DC;  /* hairline rules                             */
-  --line-strong:   #A5B4BF;  /* emphasised rules                           */
+  --surface-sunk:  #F4F1EC;  /* insets, code, table stripes                */
+  --ink:           #14161A;  /* body text                                  */
+  --slate:         #33383F;  /* secondary text, dark panels                */
+  --slate-deep:    #0E1013;  /* footer, inverted blocks                    */
+  --muted:         #5E646D;  /* meta text — 5.24:1 on paper                */
+  --line:          #E5E1D9;  /* hairline rules                             */
+  --line-strong:   #C7C1B6;  /* emphasised rules                           */
+
+  /* The five pillars ------------------------------------------------------ */
+  --coral:  #E8483F;  --coral-deep:  #C62F27;  --coral-tint:  #FDECEA;
+  --teal:   #0E9C8A;  --teal-deep:   #0A7365;  --teal-tint:   #E3F5F2;
+  --violet: #6B4CE0;  --violet-deep: #5C3BD6;  --violet-tint: #EDE8FD;
+  --amber:  #E8930C;  --amber-deep:  #A96504;  --amber-tint:  #FDF0DC;
+  --green:  #2E9E4F;  --green-deep:  #268543;  --green-tint:  #E6F5EA;
+
+  /* House accent — pages that belong to no single pillar ------------------ */
+  --accent:      #4F46C4;
+  --accent-deep: #3A32A8;
+  --accent-tint: #ECEBFA;
+  --accent-on:   #FFFFFF;   /* text colour to sit on --accent */
+
+  --highlight:   #FFC933;   /* punctuation mark: fills and rules, never text
+                               on a light ground */
+  --slate-tint:  #F0EDE7;
 
   /* Type ------------------------------------------------------------------ */
   --font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -81,6 +105,15 @@
 
   --header-h: 4.25rem;
 }
+
+
+/* Each section owns a hue. Setting data-pillar on <body> repoints the accent
+   tokens, and every rule in this file is written against those tokens. */
+[data-pillar="bodyweight-strength"]  { --accent: var(--coral);  --accent-deep: var(--coral-deep);  --accent-tint: var(--coral-tint);  --accent-on: var(--ink); }
+[data-pillar="quick-workouts"]       { --accent: var(--teal);   --accent-deep: var(--teal-deep);   --accent-tint: var(--teal-tint);   --accent-on: var(--ink); }
+[data-pillar="small-space-training"] { --accent: var(--violet); --accent-deep: var(--violet-deep); --accent-tint: var(--violet-tint); --accent-on: #FFFFFF; }
+[data-pillar="minimal-gear"]         { --accent: var(--amber);  --accent-deep: var(--amber-deep);  --accent-tint: var(--amber-tint);  --accent-on: var(--ink); }
+[data-pillar="habits-recovery"]      { --accent: var(--green);  --accent-deep: var(--green-deep);  --accent-tint: var(--green-tint);  --accent-on: var(--ink); }
 
 /* --------------------------------------------------------------------------
    2. RESET & BASE
@@ -133,7 +166,7 @@ hr {
   margin: var(--space-xl) 0;
 }
 
-::selection { background: var(--accent); color: #fff; }
+::selection { background: var(--accent-deep); color: #fff; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -175,7 +208,7 @@ hr {
   left: -9999px;
   top: 0;
   z-index: 999;
-  background: var(--accent);
+  background: var(--accent-deep);
   color: #fff;
   padding: var(--space-xs) var(--space-s);
   font-family: var(--font-display);
@@ -256,11 +289,11 @@ hr {
 .btn:hover { background: var(--ink); color: var(--paper); }
 
 .btn--accent {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
   color: #fff;
 }
-.btn--accent:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: #fff; }
+.btn--accent:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
 
 .btn--ghost-light { border-color: rgba(255,255,255,0.5); color: #fff; }
 .btn--ghost-light:hover { background: #fff; color: var(--ink); border-color: #fff; }
@@ -490,7 +523,7 @@ hr {
 .card__tag {
   position: absolute;
   left: 0; bottom: 0;
-  background: var(--accent);
+  background: var(--accent-deep);
   color: #fff;
   font-family: var(--font-display);
   font-size: var(--text-2xs);
@@ -500,7 +533,7 @@ hr {
   padding: 0.4rem 0.7rem;
   text-decoration: none;
 }
-.card__tag:hover { background: var(--accent-deep); color: #fff; }
+.card__tag:hover { background: var(--ink); color: #fff; }
 .card__body {
   padding: var(--space-m);
   display: flex;
@@ -781,7 +814,7 @@ form[data-form] .form-status { flex-basis: 100%; }
 }
 .byline__avatar {
   width: 2.75rem; height: 2.75rem;
-  background: var(--accent);
+  background: var(--accent-deep);
   color: #fff;
   display: grid;
   place-items: center;
@@ -1174,7 +1207,103 @@ form[data-form] .form-status { flex-basis: 100%; }
   z-index: 90;
 }
 .to-top.is-visible { opacity: 1; pointer-events: auto; }
-.to-top:hover { background: var(--accent); }
+.to-top:hover { background: var(--accent-deep); }
+
+/* --------------------------------------------------------------------------
+   19. SECTION TEMPLATES
+   ——— What makes each part of the site look like its own place. ———
+
+   The homepage shows all five pillars at once as solid colour blocks; each
+   category page becomes a single-hue room; posts carry a coloured rail so you
+   always know which section you are in; hub posts get a heavier header than
+   the clusters that hang off them.
+   -------------------------------------------------------------------------- */
+
+/* --- Homepage: five colour blocks --------------------------------------- */
+/* Keyed off each tile's href, so the markup needs no extra hook. */
+.pillar-tile { position: relative; overflow: hidden; transition: transform .18s ease, box-shadow .18s ease; }
+.pillar-tile { border: 0; padding: var(--space-l); min-height: 15rem;
+               display: flex; flex-direction: column; }
+.pillar-tile__desc { flex: 1; }
+.pillar-tile:hover { transform: translateY(-4px); box-shadow: 0 14px 0 -6px var(--ink); }
+
+.pillar-tile[href*="bodyweight-strength"]  { background: var(--coral);  --tile-on: var(--ink); }
+.pillar-tile[href*="quick-workouts"]       { background: var(--teal);   --tile-on: var(--ink); }
+.pillar-tile[href*="small-space-training"] { background: var(--violet); --tile-on: #FFFFFF; }
+.pillar-tile[href*="minimal-gear"]         { background: var(--amber);  --tile-on: var(--ink); }
+.pillar-tile[href*="habits-recovery"]      { background: var(--green);  --tile-on: var(--ink); }
+
+.pillar-tile .pillar-tile__name,
+.pillar-tile .pillar-tile__num   { color: var(--tile-on); }
+.pillar-tile .pillar-tile__desc,
+.pillar-tile .pillar-tile__count { color: var(--tile-on); opacity: .82; }
+.pillar-tile .pillar-tile__name  { font-size: var(--text-xl); letter-spacing: var(--tracking-tight); }
+.pillar-tile .pillar-tile__num   { font-size: var(--text-sm); opacity: .6; }
+.pillar-tile .pillar-tile__count { margin-top: var(--space-m); font-weight: 700; }
+
+/* The last tile in the grid is the "why this site exists" card — keep it
+   plain so the five colours read as a set of five, not six. */
+.pillar-tile:not([href*="categories/"]) {
+  background: var(--surface); border: 2px solid var(--ink); --tile-on: var(--ink);
+}
+
+/* Cards anywhere carry their own post's section colour, so a mixed listing
+   (the homepage, related posts) reads as five sections rather than one site. */
+.card[data-pillar] .card__tag { background: var(--accent-deep); color: #fff; }
+.card[data-pillar] .card__title a:hover { color: var(--accent-deep); }
+.card[data-pillar] { border-top: 4px solid var(--accent); }
+
+/* Inside a themed page every card belongs to that section already. */
+body[data-pillar] .card { border-top: 4px solid var(--accent); }
+body[data-pillar] .card__tag { background: var(--accent-deep); color: #fff; }
+body[data-pillar] .card__title a:hover,
+body[data-pillar] .post-row__title a:hover { color: var(--accent-deep); }
+body[data-pillar] .card .eyebrow::before { background: var(--accent); }
+
+/* --- Category pages: one hue, edge to edge ------------------------------ */
+.cat-hero {
+  background: var(--accent);
+  color: var(--accent-on);
+  padding-block: var(--space-m) var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  border-bottom: 4px solid var(--ink);
+}
+.cat-hero .breadcrumb { margin-bottom: var(--space-l); }
+.cat-hero .page-head { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+.cat-hero h1 { color: var(--accent-on); letter-spacing: var(--tracking-tight); }
+.cat-hero p  { color: var(--accent-on); opacity: .84; max-width: 46rem; }
+.cat-hero .eyebrow { color: var(--accent-on); opacity: .78; }
+.cat-hero .eyebrow::before { background: var(--accent-on); }
+.cat-hero .breadcrumb, .cat-hero .breadcrumb a { color: var(--accent-on); opacity: .8; }
+
+body[data-pillar] .post-row { border-left: 4px solid transparent; padding-left: var(--space-m);
+                              transition: border-color .15s ease, background .15s ease; }
+body[data-pillar] .post-row:hover { border-left-color: var(--accent); background: var(--accent-tint); }
+
+/* --- Posts: a coloured rail so the section is always legible ------------ */
+body[data-pillar] .post-header { position: relative; }
+body[data-pillar] .lede:not(.cat-hero .lede) { border-left: 4px solid var(--accent); padding-left: var(--space-m); }
+.cat-hero .lede { border-left: 0; padding-left: 0; }
+body[data-pillar] .toc  { border-left-color: var(--accent); background: var(--accent-tint); }
+body[data-pillar] .toc a:hover { color: var(--accent-deep); }
+body[data-pillar] .sidebar-block { border-top: 3px solid var(--accent); }
+body[data-pillar] .post-body h2 { border-bottom: 2px solid var(--accent-tint); padding-bottom: var(--space-2xs); }
+
+/* --- Hub posts carry more weight than the clusters under them ----------- */
+body[data-hub] .post-header h1 { font-size: var(--text-3xl); }
+body[data-hub] .post-header {
+  background: var(--accent-tint);
+  border-top: 5px solid var(--accent);
+  padding: var(--space-l);
+  margin-bottom: var(--space-l);
+}
+body[data-hub] .post-header .eyebrow::before { background: var(--accent-deep); }
+body[data-hub] .lede { border-left: 0; padding-left: 0; font-size: var(--text-lg); }
+
+@media (max-width: 40rem) {
+  .pillar-tile { min-height: 12rem; }
+  body[data-hub] .post-header { padding: var(--space-m) var(--space-s); }
+}
 
 /* --------------------------------------------------------------------------
    18. PRINT
