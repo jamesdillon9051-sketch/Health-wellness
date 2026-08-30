@@ -1,36 +1,22 @@
 /* ==========================================================================
    HEALTH WELLNESS — Design System
 
-   Visual direction: "five rooms". A warm near-white ground shared by the whole
-   site, and five saturated pillar colours — one per content section — that
-   retheme a page end to end. The homepage shows all five at once; every
-   category page, post and diagram inherits exactly one.
+   Visual direction: "calm". A warm off-white ground, a deep teal masthead, a
+   soft teal accent, serif headings and generous whitespace. Adapted from the
+   look of the Kabook Mind demo, rebuilt natively — no theme code is used, so
+   nothing here carries that theme's GPL.
 
-   Typography: Bricolage Grotesque carries the entire interface — headings,
-   nav, buttons, cards, labels, tables. Newsreader is used only for prose read
-   at length: post bodies, standfirsts, FAQ answers, sources. The split is by
-   role rather than by size, so a serif never has to work in a nav bar and the
-   1,200-1,800 words of each post get a face built for reading.
+   Colour, measured not guessed (WCAG AA on --paper #F9F8F6):
+     ink 10.35  teal 10.96  accent-deep 5.06  muted 5.17
+     white on teal masthead 11.63  white on accent-deep 5.37
 
-   How the colour system works
-   ---------------------------
-   Each page carries `data-pillar="<slug>"` on <body>. That remaps --accent,
-   --accent-deep, --accent-tint and --accent-on, and every rule below is
-   written against those four tokens, so a page reskins from one attribute.
-   Pages with no pillar (home, about, contact, legal) fall back to the house
-   indigo defined on :root.
+   The theme's own #009688 clears only 3.46:1 on this ground and 3.67:1 behind
+   white, so it is used for decorative fills and large text only. Anything
+   carrying body-size text uses --accent-deep.
 
-   Two accents per pillar, and why
-   -------------------------------
-   --accent       vivid. Large blocks and washes only. Paired with --accent-on,
-                  which is ink for four of the five (white on amber is 2.4:1).
-   --accent-deep  darkened. Buttons, links, small text. White on it is >= 4.5:1
-                  for all five, so button text is white everywhere and there is
-                  no per-pillar exception to remember.
-
-   Contrast, measured not guessed (WCAG AA on --paper #FDFCFA):
-     coral-deep 5.34  teal-deep 5.61  violet-deep 6.71
-     amber-deep 4.50  green-deep 4.53  muted 5.24  ink 16.1
+   The five section colours survive as small category marks — badges, tags,
+   the rule under a section heading. They no longer retheme a whole page,
+   which would fight the calm this direction depends on.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -38,32 +24,32 @@
    -------------------------------------------------------------------------- */
 :root {
   /* Ground ---------------------------------------------------------------- */
-  --paper:         #FDFCFA;  /* page background  — warm near-white         */
-  --surface:       #FFFFFF;  /* cards, panels                              */
-  --surface-sunk:  #F4F1EC;  /* insets, code, table stripes                */
-  --ink:           #14161A;  /* body text                                  */
-  --slate:         #33383F;  /* secondary text, dark panels                */
-  --slate-deep:    #0E1013;  /* footer, inverted blocks                    */
-  --muted:         #5E646D;  /* meta text — 5.24:1 on paper                */
-  --line:          #E5E1D9;  /* hairline rules                             */
-  --line-strong:   #C7C1B6;  /* emphasised rules                           */
+  --paper:         #F9F8F6;  /* page background — warm off-white            */
+  --surface:       #FFFFFF;  /* cards, panels                               */
+  --surface-sunk:  #F2F0EC;  /* insets, table stripes                       */
+  --ink:           #2C3E50;  /* body text — slate                           */
+  --slate:         #44576A;  /* secondary text                              */
+  --slate-deep:    #013F48;  /* masthead, footer — deep teal                */
+  --muted:         #5F6B70;  /* meta text                                   */
+  --line:          #E7E4DE;  /* hairline rules                              */
+  --line-strong:   #CFCAC1;  /* emphasised rules                            */
 
-  /* The five pillars ------------------------------------------------------ */
-  --coral:  #E8483F;  --coral-deep:  #C62F27;  --coral-tint:  #FDECEA;
-  --teal:   #0E9C8A;  --teal-deep:   #0A7365;  --teal-tint:   #E3F5F2;
-  --violet: #6B4CE0;  --violet-deep: #5C3BD6;  --violet-tint: #EDE8FD;
-  --amber:  #E8930C;  --amber-deep:  #A96504;  --amber-tint:  #FDF0DC;
-  --green:  #2E9E4F;  --green-deep:  #268543;  --green-tint:  #E6F5EA;
+  /* Accent ---------------------------------------------------------------- */
+  --accent:      #009688;    /* soft teal — fills and large text only       */
+  --accent-deep: #00786D;    /* text, links, buttons — white on it is 5.37  */
+  --accent-tint: #E4F2F0;    /* pale wash for callouts                      */
+  --accent-on:   #FFFFFF;    /* text that sits on --accent                  */
+  --deep:        #013F48;   /* masthead, footer, hero scrim */
 
-  /* House accent — pages that belong to no single pillar ------------------ */
-  --accent:      #4F46C4;
-  --accent-deep: #3A32A8;
-  --accent-tint: #ECEBFA;
-  --accent-on:   #FFFFFF;   /* text colour to sit on --accent */
+  --highlight:   #E8C57A;    /* warm sand, used sparingly                   */
+  --slate-tint:  #EEF2F1;
 
-  --highlight:   #FFC933;   /* punctuation mark: fills and rules, never text
-                               on a light ground */
-  --slate-tint:  #F0EDE7;
+  /* Section marks — small accents only, never a full-page theme ----------- */
+  --coral:  #C4645A;  --coral-deep:  #A44A41;  --coral-tint:  #F7ECEA;
+  --teal:   #009688;  --teal-deep:   #00786D;  --teal-tint:   #E4F2F0;
+  --violet: #6E6296;  --violet-deep: #574B7F;  --violet-tint: #EFEDF6;
+  --amber:  #C08A3E;  --amber-deep:  #8F6224;  --amber-tint:  #F7EFE1;
+  --green:  #5B8C6E;  --green-deep:  #457055;  --green-tint:  #EAF2ED;
 
   /* Type ------------------------------------------------------------------ */
   /* Two families with clear jobs. Bricolage Grotesque carries the whole
@@ -71,9 +57,13 @@
      used only where someone actually reads at length: post prose and ledes.
      A serif earns its place across 1,200-1,800 words; it does not earn one in
      a nav bar, so the split is by role, not by size. */
-  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body:    'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Serif headings are what makes this direction read as calm rather than
+     newsy. Newsreader carries both the headings and the prose; DM Sans does
+     the interface work — nav, buttons, labels, meta. */
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-prose:   'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-ui:      'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --text-2xs:  0.6875rem;
   --text-xs:   0.75rem;
@@ -91,7 +81,7 @@
   --leading-prose: 1.72;
   --text-prose:    clamp(1.1875rem, 1.12rem + 0.3vw, 1.3125rem);
 
-  --tracking-tight: -0.022em;
+  --tracking-tight: -0.012em;
   --tracking-label:  0.13em;
 
   /* Space ----------------------------------------------------------------- */
@@ -112,8 +102,9 @@
   --container-narrow: 40rem;   /* post body — ~68ch measure */
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
 
-  --radius: 0px;               /* square corners, on purpose */
-  --radius-sm: 2px;
+  --radius: 10px;              /* soft corners — the calm direction wants them */
+  --radius-sm: 6px;
+  --radius-pill: 999px;
   --rule: 1px solid var(--line);
   --rule-strong: 2px solid var(--ink);
 
@@ -121,13 +112,14 @@
 }
 
 
-/* Each section owns a hue. Setting data-pillar on <body> repoints the accent
-   tokens, and every rule in this file is written against those tokens. */
-[data-pillar="bodyweight-strength"]  { --accent: var(--coral);  --accent-deep: var(--coral-deep);  --accent-tint: var(--coral-tint);  --accent-on: var(--ink); }
-[data-pillar="quick-workouts"]       { --accent: var(--teal);   --accent-deep: var(--teal-deep);   --accent-tint: var(--teal-tint);   --accent-on: var(--ink); }
-[data-pillar="small-space-training"] { --accent: var(--violet); --accent-deep: var(--violet-deep); --accent-tint: var(--violet-tint); --accent-on: #FFFFFF; }
-[data-pillar="minimal-gear"]         { --accent: var(--amber);  --accent-deep: var(--amber-deep);  --accent-tint: var(--amber-tint);  --accent-on: var(--ink); }
-[data-pillar="habits-recovery"]      { --accent: var(--green);  --accent-deep: var(--green-deep);  --accent-tint: var(--green-tint);  --accent-on: var(--ink); }
+/* Section colour as a small mark only. The page keeps the teal accent; this
+   sets --mark, which badges, tags and heading rules use for wayfinding. */
+[data-pillar="bodyweight-strength"]  { --mark: var(--coral);  --mark-deep: var(--coral-deep);  --mark-tint: var(--coral-tint); }
+[data-pillar="quick-workouts"]       { --mark: var(--teal);   --mark-deep: var(--teal-deep);   --mark-tint: var(--teal-tint); }
+[data-pillar="small-space-training"] { --mark: var(--violet); --mark-deep: var(--violet-deep); --mark-tint: var(--violet-tint); }
+[data-pillar="minimal-gear"]         { --mark: var(--amber);  --mark-deep: var(--amber-deep);  --mark-tint: var(--amber-tint); }
+[data-pillar="habits-recovery"]      { --mark: var(--green);  --mark-deep: var(--green-deep);  --mark-tint: var(--green-tint); }
+:root { --mark: var(--accent); --mark-deep: var(--accent-deep); --mark-tint: var(--accent-tint); }
 
 /* --------------------------------------------------------------------------
    2. RESET & BASE
@@ -1509,6 +1501,95 @@ body[data-hub] .lede { border-left: 0; padding-left: 0; font-size: var(--text-lg
 }
 
 /* --------------------------------------------------------------------------
+   22. CALM DIRECTION
+   ——— Overrides that carry the teal/serif look across the magazine parts. ———
+   -------------------------------------------------------------------------- */
+
+/* --- Masthead: deep teal, white type ------------------------------------ */
+.site-header { background: var(--deep); border-bottom: 0; }
+.site-header .brand__name { color: #fff; font-family: var(--font-display);
+                            font-weight: 600; letter-spacing: -0.01em; text-transform: none; }
+.site-header .brand__mark { background: var(--accent); border-radius: var(--radius-sm); }
+.nav__link { color: rgba(255,255,255,.86); font-family: var(--font-ui);
+             font-size: var(--text-sm); font-weight: 500; letter-spacing: 0; text-transform: none; }
+.nav__link:hover, .nav__link[aria-current] { color: #fff; }
+.site-header .icon-btn { color: rgba(255,255,255,.8); }
+.site-header .icon-btn:hover { color: #fff; border-color: rgba(255,255,255,.35); }
+.nav-toggle span { background: #fff; }
+.mobile-nav { background: var(--deep); }
+.mobile-nav__link { color: rgba(255,255,255,.9); }
+
+/* The ticker was a news device; a calm site does not shout the latest. */
+.ticker { display: none; }
+.utility-bar { background: var(--surface); border-bottom: 1px solid var(--line); }
+
+/* --- Serif headings ------------------------------------------------------ */
+h1, h2, h3, .card__title, .post-row__title, .tile__title, .search__title {
+  font-family: var(--font-display); font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+}
+.eyebrow, .btn, .nav__link, .meta, .byline, .card__meta, .tile__badge, .search__cat,
+.utility-bar, .breadcrumb, .form-field label, .footer-widget h3 {
+  font-family: var(--font-ui);
+}
+
+/* --- Soft surfaces instead of hard rules --------------------------------- */
+.card, .sidebar-block, .signup__inner, .search__panel, .callout {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(1,63,72,.04), 0 8px 24px rgba(1,63,72,.05);
+}
+.card { overflow: hidden; }
+.card, .card[data-pillar], body[data-pillar] .card { border-top: 1px solid var(--line); }
+.card:hover { box-shadow: 0 2px 4px rgba(1,63,72,.06), 0 14px 34px rgba(1,63,72,.09); }
+.card__media img { aspect-ratio: 16 / 10; }
+.btn { border-radius: var(--radius-pill); font-weight: 500; letter-spacing: 0;
+       text-transform: none; font-size: var(--text-sm); padding: .7em 1.5em; }
+.btn--accent { background: var(--accent-deep); border-color: var(--accent-deep); }
+.btn--accent:hover { background: var(--deep); border-color: var(--deep); }
+.tile { border-radius: var(--radius); }
+
+/* --- Section headings: a quiet rule, not a filled tab -------------------- */
+.section-tab { border-bottom: 1px solid var(--line); align-items: baseline;
+               padding-bottom: var(--space-2xs); }
+.section-tab h2 {
+  background: none; color: var(--ink); padding: 0;
+  font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600;
+  letter-spacing: var(--tracking-tight); text-transform: none;
+  border-bottom: 2px solid var(--mark); padding-bottom: var(--space-2xs);
+  margin-bottom: calc(var(--space-2xs) * -1 - 1px);
+}
+.section-tab .meta { font-size: var(--text-sm); }
+
+/* --- Category badges keep the section colour, quietly ------------------- */
+.tile__badge, .card__tag {
+  background: var(--mark-deep); border-radius: var(--radius-pill);
+  padding: .3rem .7rem; font-weight: 500; letter-spacing: .04em;
+}
+.eyebrow::before { background: var(--mark); border-radius: 2px; }
+
+/* --- Category hero: soft teal band, not a slab of section colour -------- */
+.cat-hero {
+  background: var(--deep); color: #fff;
+  border-bottom: 0; padding-block: var(--space-l) var(--space-xl);
+}
+.cat-hero h1, .cat-hero p, .cat-hero .eyebrow,
+.cat-hero .breadcrumb, .cat-hero .breadcrumb a { color: #fff; }
+.cat-hero .eyebrow::before { background: var(--accent); }
+.cat-hero .lede { opacity: .88; }
+
+/* --- Posts: a quieter rail --------------------------------------------- */
+body[data-pillar] .lede:not(.cat-hero .lede) { border-left-color: var(--mark); }
+body[data-pillar] .toc { border-left-color: var(--mark); background: var(--surface);
+                         border-radius: var(--radius); border: 1px solid var(--line);
+                         border-left: 3px solid var(--mark); }
+body[data-pillar] .sidebar-block { border-top: 1px solid var(--line); }
+body[data-pillar] .prose h2 { border-bottom: 0; padding-bottom: 0; }
+body[data-hub] .post-header { background: var(--accent-tint); border-top: 0;
+                              border-radius: var(--radius); }
+.post-hero img, .tile img, .card__media img { border-radius: 0; }
+
+/* --------------------------------------------------------------------------
    18. PRINT
    -------------------------------------------------------------------------- */
 @media print {
@@ -1619,3 +1700,75 @@ body[data-hub] .lede { border-left: 0; padding-left: 0; font-size: var(--text-lg
                 padding-bottom: 1px; }
 .post-index a:hover { color: var(--accent-deep); border-bottom-color: var(--accent); }
 @media (max-width: 46rem) { .post-index { columns: 1; } }
+
+
+/* --------------------------------------------------------------------------
+   23. CALM HOMEPAGE
+   -------------------------------------------------------------------------- */
+
+/* Full-bleed hero: photograph behind, text on a scrim that keeps it legible
+   whatever the picture is doing underneath. */
+.calm-hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: min(34rem, 74vh); display: flex; align-items: center;
+  padding-block: var(--space-3xl);
+}
+.calm-hero__bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2;
+}
+.calm-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(100deg, rgba(1,63,72,.94) 0%, rgba(1,63,72,.88) 38%,
+                                       rgba(1,63,72,.45) 72%, rgba(1,63,72,.18) 100%);
+}
+.calm-hero__inner { max-width: 46rem; }
+.calm-hero h1 {
+  color: #fff; font-family: var(--font-display); font-weight: 500;
+  font-size: var(--text-4xl); line-height: 1.14;
+  letter-spacing: var(--tracking-tight); margin: var(--space-xs) 0 var(--space-s);
+}
+.calm-hero .eyebrow { color: rgba(255,255,255,.8); }
+.calm-hero .eyebrow::before { background: var(--accent); }
+.calm-hero__lede {
+  color: rgba(255,255,255,.9); font-family: var(--font-prose);
+  font-size: var(--text-lg); line-height: 1.6; max-width: 38rem;
+  margin-bottom: var(--space-l);
+}
+.calm-hero .btn--accent {
+  background: #fff; border-color: #fff; color: var(--deep); font-weight: 500;
+}
+.calm-hero .btn--accent:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: #fff; }
+
+/* Three promises: what the site covers, stated once. */
+.promises { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-m); }
+.promise {
+  display: block; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: var(--space-l); text-decoration: none;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.promise:hover { transform: translateY(-2px);
+                 box-shadow: 0 2px 4px rgba(1,63,72,.06), 0 14px 34px rgba(1,63,72,.09); }
+.promise__mark {
+  display: grid; place-items: center; width: 2.75rem; height: 2.75rem;
+  border-radius: 50%; background: var(--mark-tint); margin-bottom: var(--space-s);
+}
+.promise__mark::before {
+  content: ""; width: .85rem; height: .85rem; border-radius: 50%;
+  background: var(--mark-deep);
+}
+.promise__title {
+  display: block; font-family: var(--font-display); font-size: var(--text-lg);
+  font-weight: 600; color: var(--ink); letter-spacing: var(--tracking-tight);
+}
+.promise__text {
+  display: block; color: var(--muted); font-size: var(--text-sm);
+  line-height: 1.6; margin-top: var(--space-2xs);
+}
+
+@media (max-width: 62rem) { .promises { grid-template-columns: 1fr; } }
+@media (max-width: 46rem) {
+  .calm-hero { min-height: auto; padding-block: var(--space-2xl); }
+  .calm-hero h1 { font-size: var(--text-3xl); }
+  .calm-hero h1 br { display: none; }
+}

@@ -27,160 +27,39 @@ There is a checker for this — run it after any header/footer edit:
 sh tools/check-sync.sh
 ```
 
-## The colour system
+## The design
 
-The site is one warm near-white ground plus five saturated section colours.
-Every page carries `data-pillar` on `<body>`, which repoints four tokens:
+Visual direction: **calm**. A warm off-white ground, a deep teal masthead, a
+soft teal accent, serif headings and generous whitespace.
 
-| token | used for |
-|---|---|
-| `--accent` | vivid. Large blocks and washes only |
-| `--accent-deep` | buttons, links, small text. White on it is >= 4.5:1 for all five |
-| `--accent-tint` | pale wash for callouts, TOC, hub headers |
-| `--accent-on` | text colour that sits *on* `--accent` |
+The look is adapted from the demo screenshot of the *Kabook Mind* WordPress
+theme by Saeed Afshari, but **rebuilt from scratch** — no theme code was copied,
+so nothing here carries that theme's GPL. Worth knowing if you compare them:
+that theme's own stylesheet is mostly WooCommerce rules over six variables and a
+Persian-first font stack; the hero, feature cards and serif headings in its
+screenshot are demo content, not theme output.
 
-Every rule in `style.css` is written against those four, so a page reskins from
-one attribute. There are two accents per pillar because white on the vivid tone
-fails on amber (2.4:1) and coral (3.9:1) — anything carrying text uses
-`--accent-deep`, so button text is white everywhere with no exceptions.
+| token | value | used for |
+|---|---|---|
+| `--paper` | `#F9F8F6` | page ground |
+| `--deep` | `#013F48` | masthead, footer, hero scrim |
+| `--accent` | `#009688` | decorative fills, large text only |
+| `--accent-deep` | `#00786D` | links, buttons, body-size text |
+| `--ink` | `#2C3E50` | body text |
 
-| section | vivid | deep | on-vivid |
-|---|---|---|---|
-| Bodyweight strength | `#E8483F` coral | `#C62F27` | ink |
-| Quick workouts | `#0E9C8A` teal | `#0A7365` | ink |
-| Small-space training | `#6B4CE0` violet | `#5C3BD6` | white |
-| Minimal gear | `#E8930C` amber | `#A96504` | ink |
-| Habits & recovery | `#2E9E4F` green | `#268543` | ink |
+Two accents, because the theme's `#009688` clears only 3.46:1 on this ground and
+3.67:1 behind white. Anything carrying body-size text uses `--accent-deep`, where
+white reaches 5.37:1. Every pairing was measured; the lowest in use is
+`--accent-deep` on paper at 5.06:1.
 
-Pages belonging to no single pillar (home, about, contact, legal) use the house
-indigo on `:root`. All 17 foreground/background pairings were measured against
-WCAG AA; the lowest is amber-deep on paper at 4.50:1.
+**Typography.** Newsreader carries headings and prose; DM Sans does the interface
+work — nav, buttons, labels, meta. The serif is what makes the direction read as
+calm rather than newsy.
 
-To retheme, edit the pillar block in `:root` — nothing else references a colour
-directly. `python3 tools/set_pillar.py` re-applies the body attributes if you
-add pages, and `python3 tools/make_images.py` redraws the 103 diagrams in
-whatever the new colours are.
-
-## Typography
-
-Two families, split by role rather than by size.
-
-| face | job |
-|---|---|
-| **Bricolage Grotesque** | the whole interface — headings, nav, buttons, cards, labels, tables, forms |
-| **Newsreader** | prose read at length — post bodies, standfirsts, FAQ answers, sources |
-
-A serif earns its place across 1,200–1,800 words; it does not earn one in a nav
-bar. Prose gets its own scale (`--text-prose`, `--leading-prose`) because
-Newsreader runs smaller and lighter than a sans at the same pixel size.
-
-Both load from Google Fonts as variable faces — one request, roughly 150 KB
-over the wire once the browser picks its subset. The diagrams are drawn in
-Bricolage too, from the local font file, so images and page match.
-
-## Search
-
-The site is static, so search runs in the browser against a prebuilt index.
-
-`assets/search-index.json` (~61 KB, roughly 15 KB gzipped) holds each post's
-title, standfirst, section headings and target keyword. It is fetched lazily the
-first time search is opened, so a normal page view never pays for it. Body text
-is deliberately excluded — 340,000 words would be several megabytes, and titles
-and headings already cover what people type.
-
-Matching requires **every** query token to appear somewhere, so "quiet
-apartment" will not return a post that only mentions apartments. Field weights
-order the results: title, then keyword, then heading, then standfirst. Pillar
-guides break ties upward.
-
-- **Open it** with the magnifying glass, `Ctrl`/`Cmd`+`K`, or `/`
-- **Navigate** with arrow keys, `Enter` to open the top hit, `Esc` to close
-
-`search.html` is the fallback and works with no JavaScript at all: it lists
-every guide grouped by section. With JavaScript the same page becomes a live
-filter and the browse list hides once you type.
-
-One deployment note: browsers block `fetch` of a local JSON file over
-`file://`, so search will not work if you open the site straight off disk. It
-is fine on any real server. The failure is handled — the panel offers the
-browse page instead of failing silently.
-
-Rebuild the index after editing posts:
-
-```
-python3 tools/build_search_index.py
-python3 tools/build_search_page.py
-```
-
-## Images
-
-Every photograph is sourced from [Openverse](https://openverse.org/) and
-Wikimedia Commons under licences that permit commercial use and modification,
-then cropped to two sizes: a `-hero.jpg` (1200×630, also the Open Graph share
-image) and a `-cover.jpg` (1200×900) used behind headlines on the front-page
-mosaic and category thumbnails.
-
-**Attribution is a licence condition, not a courtesy.** Images under CC-BY or
-CC-BY-SA name their photographer in a credit line under the picture and in
-`credits.html`, which is generated from the same manifest the images came from
-so it cannot drift. Re-run `python3 tools/build_credits_page.py` after changing
-any image. CC0 and public-domain images need no attribution but are listed too.
-
-### Why two sources
-
-Openverse matches on titles, which fails badly on everyday English words —
-"squat" returns squat lobsters, "push up" returns starfish, "dumbbell" returns
-the Dumbbell Nebula. Its queries here are long and specific for that reason, and
-a junk-title filter drops manuscripts, museum objects and clipart.
-
-Wikimedia Commons *categories* are curated by people, so `Category:Push-ups`
-actually contains push-ups. That is the only source that reliably covers
-exercise-specific imagery, so it fills the gaps Openverse cannot.
-
-### Rebuilding the set
-
-```
-python3 tools/fetch_photos.py      # Openverse sweep -> tools/photo-pool.json
-python3 tools/topup_photos.py      # top up thin categories, merges into the pool
-python3 tools/commons_photos.py    # Commons categories, merges into the pool
-python3 tools/apply_photos.py      # assign, crop to hero + cover
-python3 tools/photo_captions.py    # alt text and credit lines
-python3 tools/build_credits_page.py
-```
-
-The downloaded originals in `tools/photos/` are gitignored working files —
-every source URL lives in `photo-pool.json`, so `fetch_photos.py` can restore
-them.
-
-### What is still drawn rather than photographed
-
-Three in-content diagrams are still generated line art, because a photograph
-cannot do their job: the push-up form comparison (correct against two faults),
-the six-exercise session board, and the training-week grid. `tools/figures.py`
-and `tools/make_images.py` still build those, and can redraw the whole set if
-you ever want the diagrams back.
-
-## The front page
-
-The site is laid out as a news magazine rather than a blog:
-
-- **Ticker** — a breaking-news strip carrying the five pillar guides
-- **Masthead** — brand, primary nav, RSS/contact/search
-- **Utility bar** — secondary links and a dateline, written by JS so a static
-  file never shows a stale date
-- **Mosaic** — one lead story plus a 2×2 of seconds, every cell an image tile
-  with a category badge and an overlaid headline
-- **Section tabs** — headings as a filled tab sitting on a rule, in the
-  section's colour
-- **Strip** — a four-across thumbnail row
-
-The five pillar colours do the sorting, which is how a magazine grid signals
-section. Each card image is a text-free **cover** variant of the post's diagram;
-the hero versions carry their own titles and cannot take an overlaid headline.
-
-The ticker, masthead and utility bar are hand-copied into all 111 files like the
-other shared blocks — `python3 tools/magazine_chrome.py` rewrites them, and
-`tools/check-sync.sh` fails if any page is missing one.
+**Section colours are marks, not themes.** The five hues survive as badges, tags
+and the rule under a section heading, set through `--mark` on `data-pillar`.
+They no longer retheme whole pages, which fought the calm this direction depends
+on.
 
 ## Section templates
 

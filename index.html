@@ -34,7 +34,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/config.js"></script>
 <script src="assets/js/main.js" defer></script>
@@ -142,89 +142,106 @@
 
 <main id="main">
 
-  <!-- FRONT PAGE MOSAIC -->
-  <section class="section section--flush-top wrap">
-    <div class="mosaic">
-      <a class="tile" href="posts/4-week-home-workout-plan.html" data-pillar="quick-workouts">
-        <img src="assets/images/4-week-home-workout-plan/4-week-home-workout-plan-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Quick workouts</span>
-          <span class="tile__title">A 4-Week Home Workout Plan for Complete Beginners</span>
-          <span class="tile__standfirst">Twelve sessions, no equipment, and a progression that assumes you will miss a day — because you will.</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
-      <a class="tile" href="posts/15-minute-full-body-workout.html" data-pillar="quick-workouts">
-        <img src="assets/images/15-minute-full-body-workout/15-minute-full-body-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Quick workouts</span>
-          <span class="tile__title">15-Minute Full-Body Workout at Home (No Equipment)</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
-      <a class="tile" href="posts/quiet-home-workouts.html" data-pillar="small-space-training">
-        <img src="assets/images/quiet-home-workouts/quiet-home-workouts-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Small space</span>
-          <span class="tile__title">Quiet Home Workouts: Train Without Annoying Your Neighbours</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
-      <a class="tile" href="posts/minimalist-home-gym-guide.html" data-pillar="minimal-gear">
-        <img src="assets/images/minimalist-home-gym-guide/minimalist-home-gym-guide-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Gear</span>
-          <span class="tile__title">The Minimalist Home Gym: What to Buy First (and What to Skip)</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
-      <a class="tile" href="posts/stick-to-home-workout-habit.html" data-pillar="habits-recovery">
-        <img src="assets/images/stick-to-home-workout-habit/stick-to-home-workout-habit-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Habits</span>
-          <span class="tile__title">How to Actually Stick to a Home Workout Habit</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
+  <!-- CALM HERO -->
+  <section class="calm-hero">
+    <img class="calm-hero__bg" src="assets/images/4-week-home-workout-plan/4-week-home-workout-plan-cover.jpg" alt="" width="1200" height="900">
+    <div class="wrap calm-hero__inner">
+      <p class="eyebrow">No gym &middot; No commute</p>
+      <h1>You don't need a gym.<br>You need twenty minutes<br>and a bit of floor.</h1>
+      <p class="calm-hero__lede">Honest, tested home training for people with a full-time
+        job, a small flat, and no interest in a monthly direct debit they will use twice.</p>
+      <a class="btn btn--accent" href="posts/4-week-home-workout-plan.html">Start the 4-week plan</a>
     </div>
+  </section>
 
-    <div class="section-tab">
-      <h2>More this week</h2>
-      <span class="meta">Four to start with</span>
+  <!-- WHAT THIS COVERS -->
+  <section class="section wrap">
+    <div class="promises">
+        <a class="promise" href="categories/minimal-gear.html" data-pillar="minimal-gear">
+          <span class="promise__mark" aria-hidden="true"></span>
+          <span class="promise__title">No equipment needed</span>
+          <span class="promise__text">What is worth buying, what is a waste, and what you already own that does the job.</span>
+        </a>
+        <a class="promise" href="categories/quick-workouts.html" data-pillar="quick-workouts">
+          <span class="promise__mark" aria-hidden="true"></span>
+          <span class="promise__title">Fifteen to thirty minutes</span>
+          <span class="promise__text">Ready-made sessions and week-by-week plans built for the time you actually have.</span>
+        </a>
+        <a class="promise" href="categories/small-space-training.html" data-pillar="small-space-training">
+          <span class="promise__mark" aria-hidden="true"></span>
+          <span class="promise__title">Room for a mat</span>
+          <span class="promise__text">Thin walls, low ceilings, a toddler underfoot. Training around the home you have.</span>
+        </a>
     </div>
-    <div class="strip">
-      <a class="tile" href="posts/no-jump-cardio.html" data-pillar="small-space-training">
-        <img src="assets/images/no-jump-cardio/no-jump-cardio-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Small space</span>
-          <span class="tile__title">No-Jump Cardio: 12 Quiet Alternatives to Burpees</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
-      <a class="tile" href="posts/push-up-progressions-for-beginners.html" data-pillar="bodyweight-strength">
-        <img src="assets/images/push-up-progressions-for-beginners/push-up-progressions-for-beginners-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Bodyweight</span>
-          <span class="tile__title">Push-Up Progressions for Absolute Beginners (Wall to Full)</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
-      <a class="tile" href="posts/one-dumbbell-workout.html" data-pillar="minimal-gear">
-        <img src="assets/images/one-dumbbell-workout/one-dumbbell-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Gear</span>
-          <span class="tile__title">One Dumbbell, Full Body: A Complete Workout</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
-      <a class="tile" href="posts/workout-at-home-with-kids.html" data-pillar="small-space-training">
-        <img src="assets/images/workout-at-home-with-kids/workout-at-home-with-kids-cover.jpg" alt="" width="1200" height="900" loading="lazy">
-        <span class="tile__body">
-          <span class="tile__badge">Small space</span>
-          <span class="tile__title">How to Work Out at Home With Kids Around</span>
-          <span class="tile__meta">Sam Reyes</span>
-        </span>
-      </a>
+  </section>
+
+  <!-- LATEST -->
+  <section class="section wrap">
+    <div class="section-tab">
+      <h2>Latest guides</h2>
+      <span class="meta"><a href="categories/quick-workouts.html">Browse all 100 &rarr;</a></span>
+    </div>
+    <div class="grid grid--3">
+        <article class="card" data-pillar="quick-workouts">
+          <a class="card__media" href="posts/15-minute-full-body-workout.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/images/15-minute-full-body-workout/15-minute-full-body-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+          </a>
+          <div class="card__body">
+            <p class="eyebrow">Quick workouts</p>
+            <h3 class="card__title"><a href="posts/15-minute-full-body-workout.html">15-Minute Full-Body Workout at Home (No Equipment)</a></h3>
+            <p class="card__excerpt">Six movements, three rounds, one timer. Built to be genuinely hard in fifteen minutes rather than pleasantly busy for forty.</p>
+          </div>
+        </article>
+        <article class="card" data-pillar="small-space-training">
+          <a class="card__media" href="posts/quiet-home-workouts.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/images/quiet-home-workouts/quiet-home-workouts-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+          </a>
+          <div class="card__body">
+            <p class="eyebrow">Small space</p>
+            <h3 class="card__title"><a href="posts/quiet-home-workouts.html">Quiet Home Workouts: Train Without Annoying Your Neighbours</a></h3>
+            <p class="card__excerpt">Every jumping exercise, replaced. A full noise-free substitution table for training above someone else's ceiling.</p>
+          </div>
+        </article>
+        <article class="card" data-pillar="minimal-gear">
+          <a class="card__media" href="posts/minimalist-home-gym-guide.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/images/minimalist-home-gym-guide/minimalist-home-gym-guide-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+          </a>
+          <div class="card__body">
+            <p class="eyebrow">Gear</p>
+            <h3 class="card__title"><a href="posts/minimalist-home-gym-guide.html">The Minimalist Home Gym: What to Buy First (and What to Skip)</a></h3>
+            <p class="card__excerpt">Four purchases cover roughly ninety per cent of what a home trainee needs. Here they are, in buying order.</p>
+          </div>
+        </article>
+        <article class="card" data-pillar="habits-recovery">
+          <a class="card__media" href="posts/stick-to-home-workout-habit.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/images/stick-to-home-workout-habit/stick-to-home-workout-habit-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+          </a>
+          <div class="card__body">
+            <p class="eyebrow">Habits</p>
+            <h3 class="card__title"><a href="posts/stick-to-home-workout-habit.html">How to Actually Stick to a Home Workout Habit</a></h3>
+            <p class="card__excerpt">Motivation is not the variable worth optimising. What behaviour research says about friction, cues and the two-day rule.</p>
+          </div>
+        </article>
+        <article class="card" data-pillar="small-space-training">
+          <a class="card__media" href="posts/no-jump-cardio.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/images/no-jump-cardio/no-jump-cardio-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+          </a>
+          <div class="card__body">
+            <p class="eyebrow">Small space</p>
+            <h3 class="card__title"><a href="posts/no-jump-cardio.html">No-Jump Cardio: 12 Quiet Alternatives to Burpees</a></h3>
+            <p class="card__excerpt">Twelve ways to raise your heart rate without your downstairs neighbour learning your schedule.</p>
+          </div>
+        </article>
+        <article class="card" data-pillar="bodyweight-strength">
+          <a class="card__media" href="posts/perfect-push-up-form.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/images/perfect-push-up-form/perfect-push-up-form-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+          </a>
+          <div class="card__body">
+            <p class="eyebrow">Bodyweight</p>
+            <h3 class="card__title"><a href="posts/perfect-push-up-form.html">How to Do a Perfect Push-Up (and Fix 5 Common Mistakes)</a></h3>
+            <p class="card__excerpt">Hand position, elbow angle, and the sagging hips that turn a chest exercise into a lower-back exercise.</p>
+          </div>
+        </article>
     </div>
   </section>
 
