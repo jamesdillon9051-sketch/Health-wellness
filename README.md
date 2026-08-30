@@ -61,6 +61,23 @@ directly. `python3 tools/set_pillar.py` re-applies the body attributes if you
 add pages, and `python3 tools/make_images.py` redraws the 103 diagrams in
 whatever the new colours are.
 
+## Typography
+
+Two families, split by role rather than by size.
+
+| face | job |
+|---|---|
+| **Bricolage Grotesque** | the whole interface — headings, nav, buttons, cards, labels, tables, forms |
+| **Newsreader** | prose read at length — post bodies, standfirsts, FAQ answers, sources |
+
+A serif earns its place across 1,200–1,800 words; it does not earn one in a nav
+bar. Prose gets its own scale (`--text-prose`, `--leading-prose`) because
+Newsreader runs smaller and lighter than a sans at the same pixel size.
+
+Both load from Google Fonts as variable faces — one request, roughly 150 KB
+over the wire once the browser picks its subset. The diagrams are drawn in
+Bricolage too, from the local font file, so images and page match.
+
 ## Section templates
 
 Each part of the site is laid out as its own place:

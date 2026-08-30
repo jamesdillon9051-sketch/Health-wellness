@@ -8,8 +8,8 @@ import os, sys
 from playwright.sync_api import sync_playwright
 
 FONTS = '/mnt/skills/examples/canvas-design/canvas-fonts'
-FACES = [('Instrument Sans', 'InstrumentSans-Bold.ttf', 700),
-         ('Instrument Sans', 'InstrumentSans-Regular.ttf', 400),
+FACES = [('Bricolage Grotesque', 'BricolageGrotesque-Bold.ttf', 700),
+         ('Bricolage Grotesque', 'BricolageGrotesque-Regular.ttf', 400),
          ('IBM Plex Mono', 'IBMPlexMono-Bold.ttf', 700),
          ('IBM Plex Mono', 'IBMPlexMono-Regular.ttf', 400)]
 

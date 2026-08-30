@@ -244,7 +244,7 @@ def arrow(x1, y1, x2, y2, colour=None, w=4, dash=False):
 def label(x, y, text, size=21, colour=None, weight=600, anchor='start', mono=False):
     colour = colour or NAVY
     fam = ("'IBM Plex Mono','DejaVu Sans Mono',monospace" if mono
-           else "'Instrument Sans','Archivo','DejaVu Sans',system-ui,sans-serif")
+           else "'Bricolage Grotesque','DejaVu Sans',system-ui,sans-serif")
     return ('<text x="%.0f" y="%.0f" font-family="%s" font-size="%d" font-weight="%d" '
             'fill="%s" text-anchor="%s">%s</text>' % (x, y, fam, size, weight, colour, anchor,
                                                       esc(text)))

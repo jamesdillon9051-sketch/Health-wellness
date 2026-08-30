@@ -6,6 +6,12 @@
    retheme a page end to end. The homepage shows all five at once; every
    category page, post and diagram inherits exactly one.
 
+   Typography: Bricolage Grotesque carries the entire interface — headings,
+   nav, buttons, cards, labels, tables. Newsreader is used only for prose read
+   at length: post bodies, standfirsts, FAQ answers, sources. The split is by
+   role rather than by size, so a serif never has to work in a nav bar and the
+   1,200-1,800 words of each post get a face built for reading.
+
    How the colour system works
    ---------------------------
    Each page carries `data-pillar="<slug>"` on <body>. That remaps --accent,
@@ -60,8 +66,14 @@
   --slate-tint:  #F0EDE7;
 
   /* Type ------------------------------------------------------------------ */
-  --font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body:    'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Two families with clear jobs. Bricolage Grotesque carries the whole
+     interface — headings, nav, buttons, labels, cards, forms. Newsreader is
+     used only where someone actually reads at length: post prose and ledes.
+     A serif earns its place across 1,200-1,800 words; it does not earn one in
+     a nav bar, so the split is by role, not by size. */
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-prose:   'Newsreader', Georgia, 'Times New Roman', serif;
 
   --text-2xs:  0.6875rem;
   --text-xs:   0.75rem;
@@ -76,6 +88,8 @@
   --leading-tight: 1.08;
   --leading-snug:  1.28;
   --leading-body:  1.68;
+  --leading-prose: 1.72;
+  --text-prose:    clamp(1.1875rem, 1.12rem + 0.3vw, 1.3125rem);
 
   --tracking-tight: -0.022em;
   --tracking-label:  0.13em;
@@ -1209,6 +1223,34 @@ form[data-form] .form-status { flex-basis: 100%; }
 .to-top.is-visible { opacity: 1; pointer-events: auto; }
 .to-top:hover { background: var(--accent-deep); }
 
+button, input, select, textarea { font: inherit; }
+
+/* --- Long-form prose ---------------------------------------------------- */
+/* Newsreader only from here down: the post body, the standfirst, the FAQ
+   answers and the source list — everything that is read rather than scanned. */
+.prose,
+.prose p,
+.prose li,
+.lede,
+.faq__answer,
+.sources li {
+  font-family: var(--font-prose);
+  font-size: var(--text-prose);
+  line-height: var(--leading-prose);
+}
+.prose h2, .prose h3, .prose h4 { font-family: var(--font-display); }
+.sources li { font-size: var(--text-sm); line-height: 1.55; }
+.prose strong { font-weight: 600; }
+.prose em { font-style: italic; }
+/* Numerals in a serif at body size read better lining than old-style. */
+.prose, .lede { font-variant-numeric: lining-nums; }
+/* Callouts, tables and figure captions stay in the UI face — they are scanned. */
+.callout, .prose table, .prose figcaption, .callout p {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+}
+
 /* --------------------------------------------------------------------------
    19. SECTION TEMPLATES
    ——— What makes each part of the site look like its own place. ———
@@ -1287,7 +1329,7 @@ body[data-pillar] .lede:not(.cat-hero .lede) { border-left: 4px solid var(--acce
 body[data-pillar] .toc  { border-left-color: var(--accent); background: var(--accent-tint); }
 body[data-pillar] .toc a:hover { color: var(--accent-deep); }
 body[data-pillar] .sidebar-block { border-top: 3px solid var(--accent); }
-body[data-pillar] .post-body h2 { border-bottom: 2px solid var(--accent-tint); padding-bottom: var(--space-2xs); }
+body[data-pillar] .prose h2 { border-bottom: 2px solid var(--accent-tint); padding-bottom: var(--space-2xs); }
 
 /* --- Hub posts carry more weight than the clusters under them ----------- */
 body[data-hub] .post-header h1 { font-size: var(--text-3xl); }

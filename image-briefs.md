@@ -45,7 +45,7 @@ exists if you want neutral placeholders back instead.
       Subject: simple instructional diagram showing the six exercises as minimal line-art figures in a 3x2 grid, each numbered. Composition: flat vector, thick 3px slate strokes on paper ground, vermilion numerals, generous white space, no shading. Mood: field-manual / instruction sheet, not illustrative. Colours: #F4F1EA ground, #2E3B45 strokes, #E1492E numerals.
 
 - [ ] **`15-minute-full-body-workout-02.jpg`** (1200x800)
-      Subject: a simple weekly schedule grid (Mon–Sun) with three days marked as workout days and the rest marked "walk / rest". Composition: flat infographic, bold Archivo-style lettering, thick rules, no gradients or shadows. Mood: planner page from a field manual. Colours: #F4F1EA ground, #2E3B45 grid and text, #E1492E for the three marked training days.
+      Subject: a simple weekly schedule grid (Mon–Sun) with three days marked as workout days and the rest marked "walk / rest". Composition: flat infographic, bold Bricolage-style lettering, thick rules, no gradients or shadows. Mood: planner page from a field manual. Colours: #F4F1EA ground, #2E3B45 grid and text, #E1492E for the three marked training days.
 
 ## 20-Minute Home HIIT Workout With No Jumping
 `posts/20-minute-hiit-no-jumping.html` — folder: `assets/images/20-minute-hiit-no-jumping/`
