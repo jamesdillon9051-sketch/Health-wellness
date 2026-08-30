@@ -75,10 +75,17 @@ cobalt `#2B4EC7`, surveyor's yellow `#F5D547` used sparingly.
 **Total images needed: %d unique files** across %d pages. (The homepage reuses
 ten post heroes, so there are more `<img>` tags than files to source.)
 
-**Placeholders are already in place.** Every path below currently holds a
-generated blueprint placeholder stamped with its own brief, so the site renders
-complete. Replace a file to publish the real photograph — no HTML edit needed.
-Regenerate them any time with `python3 tools/make_placeholders.py`.
+**Original diagrams are already in place — nothing here is outstanding.** Every
+path below holds a generated blueprint diagram: an exercise-manual figure, a form
+comparison, or a training-week grid, drawn by `tools/figures.py` and composed by
+`tools/compose.py`. All of it is original line art, so there is no licence to
+honour, no attribution to carry and no takedown risk. Regenerate the set any time
+with `python3 tools/make_images.py`.
+
+The briefs below describe **optional** photography, kept in case you ever
+commission real photos. If you do, overwrite the file at the same path — the alt
+text describes the diagram, so update it too. `tools/make_placeholders.py` still
+exists if you want neutral placeholders back instead.
 
 ---
 """ % (R.SITE, len(set(r[1] for r in rows)), len(by_post))]
