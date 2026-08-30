@@ -1306,11 +1306,11 @@ body[data-pillar] .card .eyebrow::before { background: var(--accent); }
 .cat-hero {
   background: var(--accent);
   color: var(--accent-on);
-  padding-block: var(--space-m) var(--space-xl);
+  padding-block: var(--space-s) var(--space-l);
   margin-bottom: var(--space-2xl);
   border-bottom: 4px solid var(--ink);
 }
-.cat-hero .breadcrumb { margin-bottom: var(--space-l); }
+.cat-hero .breadcrumb { margin-bottom: var(--space-s); }
 .cat-hero .page-head { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
 .cat-hero h1 { color: var(--accent-on); letter-spacing: var(--tracking-tight); }
 .cat-hero p  { color: var(--accent-on); opacity: .84; max-width: 46rem; }
@@ -1348,6 +1348,167 @@ body[data-hub] .lede { border-left: 0; padding-left: 0; font-size: var(--text-lg
 }
 
 /* --------------------------------------------------------------------------
+   20. MAGAZINE CHROME
+   ——— Ticker, utility bar, section tabs and the mosaic grid. ———
+
+   A news-magazine front page is dense on purpose: more entry points above the
+   fold, colour used to sort rather than to decorate. The five pillar colours
+   become category badges, which is how a magazine grid signals section.
+   -------------------------------------------------------------------------- */
+
+/* --- Breaking-news ticker ----------------------------------------------- */
+.ticker {
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  border-bottom: 3px solid var(--highlight);
+}
+.ticker__inner { display: flex; align-items: stretch; gap: 0; overflow: hidden; }
+.ticker__label {
+  flex: none;
+  background: var(--highlight);
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  padding: 0.6rem var(--space-s);
+  display: flex; align-items: center; gap: .4rem;
+}
+.ticker__list {
+  display: flex; gap: var(--space-l);
+  list-style: none; margin: 0; padding: 0.6rem var(--space-s);
+  white-space: nowrap; overflow: hidden; min-width: 0;
+}
+.ticker__list a { color: rgba(255,255,255,.86); text-decoration: none; }
+.ticker__list a:hover { color: var(--highlight); }
+.ticker__list li + li { position: relative; }
+.ticker__list li + li::before {
+  content: ""; position: absolute; left: calc(var(--space-l) / -2);
+  top: .35em; bottom: .35em; width: 1px; background: rgba(255,255,255,.25);
+}
+
+/* --- Utility bar under the masthead ------------------------------------- */
+.utility-bar {
+  border-bottom: var(--rule);
+  background: var(--surface);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+}
+.utility-bar__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-m); padding-block: 0.55rem; flex-wrap: wrap;
+}
+.utility-bar nav ul { display: flex; gap: var(--space-m); list-style: none; margin: 0; padding: 0; }
+.utility-bar a { color: var(--muted); text-decoration: none; }
+.utility-bar a:hover { color: var(--accent-deep); }
+.utility-bar__date { color: var(--muted); letter-spacing: .02em; }
+
+/* --- Masthead actions: social + search ---------------------------------- */
+.header-actions { display: flex; align-items: center; gap: var(--space-xs); }
+.header-actions__social { display: flex; gap: 0.15rem; }
+.icon-btn {
+  width: 2rem; height: 2rem; display: grid; place-items: center;
+  color: var(--muted); border: 1px solid transparent; background: none;
+  cursor: pointer; text-decoration: none;
+}
+.icon-btn:hover { color: var(--accent-deep); border-color: var(--line); }
+.icon-btn svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+/* --- Section heading as a tab ------------------------------------------- */
+.section-tab {
+  display: flex; align-items: flex-end; gap: var(--space-s);
+  border-bottom: 3px solid var(--accent);
+  margin-bottom: var(--space-l);
+}
+.section-tab h2 {
+  background: var(--accent);
+  color: var(--accent-on);
+  font-size: var(--text-base);
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  padding: 0.5rem var(--space-s);
+  margin: 0;
+}
+.section-tab .meta { color: var(--muted); font-size: var(--text-xs); padding-bottom: .5rem; margin-left: auto; }
+
+/* --- Mosaic: one lead story plus a 2x2 of seconds ----------------------- */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-2xl);
+}
+.mosaic > :first-child { grid-row: span 2; }
+
+/* --- Image tile with a scrim and an overlaid headline ------------------- */
+.tile {
+  position: relative; display: block; overflow: hidden;
+  min-height: 13rem; text-decoration: none; background: var(--surface-sunk);
+  isolation: isolate;
+}
+.mosaic > .tile:first-child { min-height: 27rem; }
+.tile img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2;
+  transition: transform .4s ease;
+}
+.tile:hover img { transform: scale(1.04); }
+/* The scrim is what makes white type legible over artwork of any brightness. */
+.tile::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to top, rgba(10,11,13,.92) 0%, rgba(10,11,13,.72) 34%,
+                                       rgba(10,11,13,.18) 66%, rgba(10,11,13,.04) 100%);
+}
+.tile__body { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-m);
+              display: flex; flex-direction: column; align-items: flex-start; }
+.tile__badge {
+  display: inline-block; background: var(--accent-deep); color: #fff;
+  font-family: var(--font-display); font-size: var(--text-2xs); font-weight: 700;
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  padding: .25rem .5rem; margin-bottom: var(--space-2xs);
+}
+.tile__title {
+  display: block;
+  font-family: var(--font-display); color: #fff; font-weight: 700;
+  font-size: var(--text-lg); line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight); margin: 0;
+}
+.mosaic > .tile:first-child .tile__title { font-size: var(--text-2xl); }
+.tile__meta {
+  display: block;
+  font-family: var(--font-display); color: rgba(255,255,255,.78);
+  font-size: var(--text-xs); margin-top: var(--space-2xs);
+}
+.tile__standfirst {
+  display: block;
+  color: rgba(255,255,255,.82); font-size: var(--text-sm);
+  margin-top: var(--space-2xs); max-width: 46ch;
+}
+.tile:hover .tile__title { text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- Dense thumbnail strip ---------------------------------------------- */
+.strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-s); }
+.strip .tile { min-height: 11rem; }
+.strip .tile__title { font-size: var(--text-base); }
+
+@media (max-width: 62rem) {
+  .mosaic { grid-template-columns: 1fr 1fr; }
+  .mosaic > :first-child { grid-column: span 2; grid-row: auto; }
+  .mosaic > .tile:first-child { min-height: 20rem; }
+  .strip { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 40rem) {
+  .mosaic { grid-template-columns: 1fr; }
+  .mosaic > :first-child { grid-column: auto; }
+  .strip { grid-template-columns: 1fr; }
+  .ticker__label span { display: none; }
+  .utility-bar__inner { justify-content: center; }
+}
+
+/* --------------------------------------------------------------------------
    18. PRINT
    -------------------------------------------------------------------------- */
 @media print {
@@ -1356,3 +1517,11 @@ body[data-hub] .lede { border-left: 0; padding-left: 0; font-size: var(--text-lg
   body { background: #fff; font-size: 11pt; }
   .prose h2 { break-after: avoid; }
 }
+
+
+/* Category cards carry a cover thumbnail, added by tools/card_thumbs.py — a
+   text-only listing reads as a blog index, not a magazine section front. */
+.card__media { display: block; overflow: hidden; background: var(--surface-sunk); }
+.card__media img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover;
+                   transition: transform .35s ease; }
+.card:hover .card__media img { transform: scale(1.04); }

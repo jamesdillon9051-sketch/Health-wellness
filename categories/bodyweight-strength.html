@@ -87,6 +87,19 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ===== SHARED HEADER — keep identical across all pages ===== -->
+<div class="ticker">
+  <div class="wrap ticker__inner">
+    <span class="ticker__label">Latest <span>guides</span></span>
+    <ul class="ticker__list">
+        <li><a href="../posts/bodyweight-strength-training-at-home.html">The Complete Guide to Bodyweight Strength Training at Home</a></li>
+        <li><a href="../posts/bodyweight-exercise-progressions.html">Bodyweight Exercise Progressions: Beginner to Advanced</a></li>
+        <li><a href="../posts/short-workouts-guide.html">The Busy Person's Guide to Training in Under 30 Minutes</a></li>
+        <li><a href="../posts/4-week-home-workout-plan.html">A 4-Week Home Workout Plan for Complete Beginners</a></li>
+        <li><a href="../posts/small-apartment-workout-guide.html">The Complete Guide to Working Out in a Small Apartment</a></li>
+    </ul>
+  </div>
+</div>
+
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="../index.html">
@@ -96,7 +109,7 @@
 
     <nav class="nav" aria-label="Primary">
       <ul class="nav__list">
-        <li><a class="nav__link" href="../categories/bodyweight-strength.html" aria-current="page">Bodyweight</a></li>
+        <li><a class="nav__link" href="../categories/bodyweight-strength.html">Bodyweight</a></li>
         <li><a class="nav__link" href="../categories/quick-workouts.html">Quick Workouts</a></li>
         <li><a class="nav__link" href="../categories/small-space-training.html">Small Space</a></li>
         <li><a class="nav__link" href="../categories/minimal-gear.html">Gear</a></li>
@@ -105,6 +118,11 @@
       </ul>
     </nav>
 
+    <div class="header-actions">
+      <span class="header-actions__social"><a class="icon-btn" href="../index.html" aria-label="RSS feed"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3v2.5c5 0 9.5 4.5 9.5 9.5H15C15 8.4 9.6 3 3 3zm0 5v2.5c2.2 0 4 1.8 4 4H9.5C9.5 10.9 6.6 8 3 8zm1.5 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a><a class="icon-btn" href="../contact.html" aria-label="Contact"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14v10H2V4zm1.6 1.4L9 9.2l5.4-3.8H3.6zM3.5 7v5.6h11V7L9 10.8 3.5 7z"/></svg></a></span>
+      <a class="icon-btn" href="../index.html" aria-label="Search"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11.7 10.3a6 6 0 1 0-1.4 1.4l3.5 3.5 1.4-1.4-3.5-3.5zM7 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg></a>
+    </div>
+
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -112,16 +130,30 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="../categories/bodyweight-strength.html">Bodyweight Strength</a></li>
-      <li><a class="mobile-nav__link" href="../categories/quick-workouts.html">Quick Workouts &amp; Plans</a></li>
-      <li><a class="mobile-nav__link" href="../categories/small-space-training.html">Small-Space Training</a></li>
-      <li><a class="mobile-nav__link" href="../categories/minimal-gear.html">Minimal Gear</a></li>
-      <li><a class="mobile-nav__link" href="../categories/habits-recovery.html">Habits &amp; Recovery</a></li>
+      <li><a class="mobile-nav__link" href="../categories/bodyweight-strength.html">Bodyweight</a></li>
+      <li><a class="mobile-nav__link" href="../categories/quick-workouts.html">Quick Workouts</a></li>
+      <li><a class="mobile-nav__link" href="../categories/small-space-training.html">Small Space</a></li>
+      <li><a class="mobile-nav__link" href="../categories/minimal-gear.html">Gear</a></li>
+      <li><a class="mobile-nav__link" href="../categories/habits-recovery.html">Habits</a></li>
       <li><a class="mobile-nav__link" href="../about.html">About</a></li>
       <li><a class="mobile-nav__link" href="../contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
+
+<div class="utility-bar">
+  <div class="wrap utility-bar__inner">
+    <nav aria-label="Secondary">
+      <ul>
+        <li><a href="../categories/quick-workouts.html">Start here</a></li>
+        <li><a href="../posts/4-week-home-workout-plan.html">The 4-week plan</a></li>
+        <li><a href="../medical-disclaimer.html">Medical disclaimer</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <span class="utility-bar__date" data-today>Updated weekly</span>
+  </div>
+</div>
 <!-- ===== /SHARED HEADER ===== -->
 
 <main id="main">
@@ -147,12 +179,15 @@
   </div>
 
   <section class="section section--flush-top wrap">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>Start with these</h2>
       <span class="meta">The two comprehensive guides in this topic</span>
     </div>
     <div class="grid grid--2">
       <article class="card">
+        <a class="card__media" href="../posts/bodyweight-strength-training-at-home.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/bodyweight-strength-training-at-home/bodyweight-strength-training-at-home-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Pillar guide</p>
           <h3 class="card__title"><a href="../posts/bodyweight-strength-training-at-home.html">The Complete Guide to Bodyweight Strength Training at Home</a></h3>
@@ -160,6 +195,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/bodyweight-exercise-progressions.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/bodyweight-exercise-progressions/bodyweight-exercise-progressions-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Pillar guide</p>
           <h3 class="card__title"><a href="../posts/bodyweight-exercise-progressions.html">Bodyweight Exercise Progressions: Beginner to Advanced</a></h3>
@@ -170,12 +208,15 @@
   </section>
 
   <section class="section section--flush-top wrap">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>All 20 guides</h2>
       <span class="meta">Newest first</span>
     </div>
     <div class="grid grid--3">
       <article class="card">
+        <a class="card__media" href="../posts/perfect-push-up-form.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/perfect-push-up-form/perfect-push-up-form-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/perfect-push-up-form.html">How to Do a Perfect Push-Up (and Fix 5 Common Mistakes)</a></h3>
@@ -183,6 +224,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/push-up-progressions-for-beginners.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/push-up-progressions-for-beginners/push-up-progressions-for-beginners-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/push-up-progressions-for-beginners.html">Push-Up Progressions for Absolute Beginners (Wall to Full)</a></h3>
@@ -190,6 +234,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/build-chest-without-weights.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/build-chest-without-weights/build-chest-without-weights-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/build-chest-without-weights.html">How to Build Chest Muscle Without Weights</a></h3>
@@ -197,6 +244,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/bodyweight-squat-form.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/bodyweight-squat-form/bodyweight-squat-form-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/bodyweight-squat-form.html">Bodyweight Squat Form: Depth, Knees and Heels Explained</a></h3>
@@ -204,6 +254,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/bulgarian-split-squat-at-home.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/bulgarian-split-squat-at-home/bulgarian-split-squat-at-home-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/bulgarian-split-squat-at-home.html">Bulgarian Split Squats at Home Using a Sofa</a></h3>
@@ -211,6 +264,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/leg-workout-no-equipment.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/leg-workout-no-equipment/leg-workout-no-equipment-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/leg-workout-no-equipment.html">How to Train Legs at Home Without Any Equipment</a></h3>
@@ -218,6 +274,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/pistol-squat-progression.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/pistol-squat-progression/pistol-squat-progression-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/pistol-squat-progression.html">Pistol Squat Progression: A Realistic 12-Week Path</a></h3>
@@ -225,6 +284,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/first-pull-up-at-home.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/first-pull-up-at-home/first-pull-up-at-home-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/first-pull-up-at-home.html">How to Do Your First Pull-Up at Home</a></h3>
@@ -232,6 +294,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/back-exercises-no-equipment.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/back-exercises-no-equipment/back-exercises-no-equipment-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/back-exercises-no-equipment.html">Back Exercises With No Equipment That Actually Work</a></h3>
@@ -239,6 +304,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/rows-at-home.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/rows-at-home/rows-at-home-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/rows-at-home.html">Rows at Home: 7 Ways to Train Your Back Without a Gym</a></h3>
@@ -246,6 +314,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/core-training-without-situps.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/core-training-without-situps/core-training-without-situps-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/core-training-without-situps.html">Core Training Without Sit-Ups: 10 Better Options</a></h3>
@@ -253,6 +324,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/plank-progression.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/plank-progression/plank-progression-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/plank-progression.html">The Plank Progression Chart: Beginner to Five Minutes</a></h3>
@@ -260,6 +334,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/bodyweight-shoulder-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/bodyweight-shoulder-workout/bodyweight-shoulder-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/bodyweight-shoulder-workout.html">Bodyweight Shoulder Workout for Strong, Stable Shoulders</a></h3>
@@ -267,6 +344,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/handstand-progression-beginners.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/handstand-progression-beginners/handstand-progression-beginners-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/handstand-progression-beginners.html">Handstand Progression for Beginners at Home</a></h3>
@@ -274,6 +354,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/dips-at-home.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/dips-at-home/dips-at-home-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/dips-at-home.html">Dips at Home: Chairs, Counters and Safe Setups</a></h3>
@@ -281,6 +364,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/glute-exercises-at-home.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/glute-exercises-at-home/glute-exercises-at-home-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/glute-exercises-at-home.html">Glute Exercises at Home That Beat the Gym Machines</a></h3>
@@ -288,6 +374,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/bodyweight-arm-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/bodyweight-arm-workout/bodyweight-arm-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/bodyweight-arm-workout.html">Bodyweight Arm Workout: Biceps and Triceps With No Weights</a></h3>
@@ -295,6 +384,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/build-muscle-bodyweight-only.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/build-muscle-bodyweight-only/build-muscle-bodyweight-only-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Bodyweight</p>
           <h3 class="card__title"><a href="../posts/build-muscle-bodyweight-only.html">How to Build Muscle With Bodyweight Only (What Research Says)</a></h3>

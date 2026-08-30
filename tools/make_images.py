@@ -193,7 +193,7 @@ def build():
         cap = cap if len(cap) <= 92 else cap[:90].rstrip(' ,;') + '…'
         title = short_title(meta['title'])
         eb = PILLAR_LABEL[pillar]
-        F.set_pillar(pillar)   # diagram lands in its section's colour
+        F.set_pillar(pillar, 'page')   # diagram lands in its section's colour
         sessions = 3
         if spec[0] == 'week':
             n = 3
@@ -213,6 +213,16 @@ def build():
         set_alt(os.path.basename(out), alt_for(spec, meta['title'], sessions),
                 [f, 'index.html'])
         jobs.append((svg, out, w, h))
+
+        # text-free variant for the magazine cards, which overlay their own headline
+        cov = out.replace('-hero.jpg', '-cover.jpg')
+        F.set_pillar(pillar, 'cover', tone=sum(ord(c) for c in slug) % 3)
+        if spec[0] == 'week':
+            jobs.append((C.cover('stand', 'squat-top'), cov, 1200, 900))
+        elif spec[0] == 'one':
+            jobs.append((C.cover(spec[1]), cov, 1200, 900))
+        else:
+            jobs.append((C.cover(spec[1], spec[2]), cov, 1200, 900))
     return jobs, used_fallback
 
 
@@ -252,7 +262,6 @@ def extras():
 if __name__ == '__main__':
     jobs, fb = build()
     jobs += extras()
-    print('rendering %d diagrams (%d heroes + %d in-content)...'
-          % (len(jobs), len(jobs) - 3, 3))
+    print('rendering %d images (100 heroes + 100 covers + 3 in-content)...' % len(jobs))
     rasterize.render(jobs, quality=86)
     print('done')

@@ -87,6 +87,19 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ===== SHARED HEADER — keep identical across all pages ===== -->
+<div class="ticker">
+  <div class="wrap ticker__inner">
+    <span class="ticker__label">Latest <span>guides</span></span>
+    <ul class="ticker__list">
+        <li><a href="../posts/bodyweight-strength-training-at-home.html">The Complete Guide to Bodyweight Strength Training at Home</a></li>
+        <li><a href="../posts/bodyweight-exercise-progressions.html">Bodyweight Exercise Progressions: Beginner to Advanced</a></li>
+        <li><a href="../posts/short-workouts-guide.html">The Busy Person's Guide to Training in Under 30 Minutes</a></li>
+        <li><a href="../posts/4-week-home-workout-plan.html">A 4-Week Home Workout Plan for Complete Beginners</a></li>
+        <li><a href="../posts/small-apartment-workout-guide.html">The Complete Guide to Working Out in a Small Apartment</a></li>
+    </ul>
+  </div>
+</div>
+
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="../index.html">
@@ -98,12 +111,17 @@
       <ul class="nav__list">
         <li><a class="nav__link" href="../categories/bodyweight-strength.html">Bodyweight</a></li>
         <li><a class="nav__link" href="../categories/quick-workouts.html">Quick Workouts</a></li>
-        <li><a class="nav__link" href="../categories/small-space-training.html" aria-current="page">Small Space</a></li>
+        <li><a class="nav__link" href="../categories/small-space-training.html">Small Space</a></li>
         <li><a class="nav__link" href="../categories/minimal-gear.html">Gear</a></li>
         <li><a class="nav__link" href="../categories/habits-recovery.html">Habits</a></li>
         <li><a class="nav__link" href="../about.html">About</a></li>
       </ul>
     </nav>
+
+    <div class="header-actions">
+      <span class="header-actions__social"><a class="icon-btn" href="../index.html" aria-label="RSS feed"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3v2.5c5 0 9.5 4.5 9.5 9.5H15C15 8.4 9.6 3 3 3zm0 5v2.5c2.2 0 4 1.8 4 4H9.5C9.5 10.9 6.6 8 3 8zm1.5 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a><a class="icon-btn" href="../contact.html" aria-label="Contact"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14v10H2V4zm1.6 1.4L9 9.2l5.4-3.8H3.6zM3.5 7v5.6h11V7L9 10.8 3.5 7z"/></svg></a></span>
+      <a class="icon-btn" href="../index.html" aria-label="Search"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11.7 10.3a6 6 0 1 0-1.4 1.4l3.5 3.5 1.4-1.4-3.5-3.5zM7 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg></a>
+    </div>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -112,16 +130,30 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="../categories/bodyweight-strength.html">Bodyweight Strength</a></li>
-      <li><a class="mobile-nav__link" href="../categories/quick-workouts.html">Quick Workouts &amp; Plans</a></li>
-      <li><a class="mobile-nav__link" href="../categories/small-space-training.html">Small-Space Training</a></li>
-      <li><a class="mobile-nav__link" href="../categories/minimal-gear.html">Minimal Gear</a></li>
-      <li><a class="mobile-nav__link" href="../categories/habits-recovery.html">Habits &amp; Recovery</a></li>
+      <li><a class="mobile-nav__link" href="../categories/bodyweight-strength.html">Bodyweight</a></li>
+      <li><a class="mobile-nav__link" href="../categories/quick-workouts.html">Quick Workouts</a></li>
+      <li><a class="mobile-nav__link" href="../categories/small-space-training.html">Small Space</a></li>
+      <li><a class="mobile-nav__link" href="../categories/minimal-gear.html">Gear</a></li>
+      <li><a class="mobile-nav__link" href="../categories/habits-recovery.html">Habits</a></li>
       <li><a class="mobile-nav__link" href="../about.html">About</a></li>
       <li><a class="mobile-nav__link" href="../contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
+
+<div class="utility-bar">
+  <div class="wrap utility-bar__inner">
+    <nav aria-label="Secondary">
+      <ul>
+        <li><a href="../categories/quick-workouts.html">Start here</a></li>
+        <li><a href="../posts/4-week-home-workout-plan.html">The 4-week plan</a></li>
+        <li><a href="../medical-disclaimer.html">Medical disclaimer</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <span class="utility-bar__date" data-today>Updated weekly</span>
+  </div>
+</div>
 <!-- ===== /SHARED HEADER ===== -->
 
 <main id="main">
@@ -147,12 +179,15 @@
   </div>
 
   <section class="section section--flush-top wrap">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>Start with these</h2>
       <span class="meta">The two comprehensive guides in this topic</span>
     </div>
     <div class="grid grid--2">
       <article class="card">
+        <a class="card__media" href="../posts/small-apartment-workout-guide.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/small-apartment-workout-guide/small-apartment-workout-guide-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Pillar guide</p>
           <h3 class="card__title"><a href="../posts/small-apartment-workout-guide.html">The Complete Guide to Working Out in a Small Apartment</a></h3>
@@ -160,6 +195,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/quiet-home-workouts.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/quiet-home-workouts/quiet-home-workouts-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Pillar guide</p>
           <h3 class="card__title"><a href="../posts/quiet-home-workouts.html">Quiet Home Workouts: Train Without Annoying Your Neighbours</a></h3>
@@ -170,12 +208,15 @@
   </section>
 
   <section class="section section--flush-top wrap">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>All 20 guides</h2>
       <span class="meta">Newest first</span>
     </div>
     <div class="grid grid--3">
       <article class="card">
+        <a class="card__media" href="../posts/no-jump-cardio.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/no-jump-cardio/no-jump-cardio-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/no-jump-cardio.html">No-Jump Cardio: 12 Quiet Alternatives to Burpees</a></h3>
@@ -183,6 +224,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/apartment-friendly-hiit.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/apartment-friendly-hiit/apartment-friendly-hiit-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/apartment-friendly-hiit.html">Apartment-Friendly HIIT for Upstairs Flats</a></h3>
@@ -190,6 +234,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/how-much-space-to-work-out.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/how-much-space-to-work-out/how-much-space-to-work-out-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/how-much-space-to-work-out.html">How Much Floor Space Do You Actually Need to Work Out?</a></h3>
@@ -197,6 +244,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/low-ceiling-workouts.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/low-ceiling-workouts/low-ceiling-workouts-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/low-ceiling-workouts.html">Low-Ceiling Workouts: Training When You Can't Reach Overhead</a></h3>
@@ -204,6 +254,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/hotel-room-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/hotel-room-workout/hotel-room-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/hotel-room-workout.html">Hotel Room Workout: 20 Minutes, No Gear</a></h3>
@@ -211,6 +264,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/office-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/office-workout/office-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/office-workout.html">Office Workout You Can Do in Work Clothes</a></h3>
@@ -218,6 +274,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/exercise-mat-for-noise-reduction.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/exercise-mat-for-noise-reduction/exercise-mat-for-noise-reduction-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/exercise-mat-for-noise-reduction.html">Best Exercise Mats for Noise Reduction in Apartments</a></h3>
@@ -225,6 +284,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/workout-at-home-with-kids.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/workout-at-home-with-kids/workout-at-home-with-kids-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/workout-at-home-with-kids.html">How to Work Out at Home With Kids Around</a></h3>
@@ -232,6 +294,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/home-gym-corner-small-space.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/home-gym-corner-small-space/home-gym-corner-small-space-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/home-gym-corner-small-space.html">Setting Up a Home Gym Corner in a One-Bedroom</a></h3>
@@ -239,6 +304,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/silent-ab-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/silent-ab-workout/silent-ab-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/silent-ab-workout.html">Silent Ab Workout for Shared Walls</a></h3>
@@ -246,6 +314,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/carpet-vs-hard-floor-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/carpet-vs-hard-floor-workout/carpet-vs-hard-floor-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/carpet-vs-hard-floor-workout.html">Carpet vs Hard Floor: How Your Surface Changes Your Workout</a></h3>
@@ -253,6 +324,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/balcony-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/balcony-workout/balcony-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/balcony-workout.html">Balcony and Garden Workouts for Small Outdoor Spaces</a></h3>
@@ -260,6 +334,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/stair-workouts.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/stair-workouts/stair-workouts-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/stair-workouts.html">Stair Workouts: The Only Equipment Your Building Gave You</a></h3>
@@ -267,6 +344,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/storing-home-gym-equipment.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/storing-home-gym-equipment/storing-home-gym-equipment-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/storing-home-gym-equipment.html">How to Store Home Gym Equipment in a Tiny Flat</a></h3>
@@ -274,6 +354,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/bedroom-workout-quiet.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/bedroom-workout-quiet/bedroom-workout-quiet-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/bedroom-workout-quiet.html">Workouts You Can Do in a Bedroom Without Waking Anyone</a></h3>
@@ -281,6 +364,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/standing-workout-no-floor.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/standing-workout-no-floor/standing-workout-no-floor-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/standing-workout-no-floor.html">Standing Workouts: No Getting Up and Down Off the Floor</a></h3>
@@ -288,6 +374,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/travel-workout-routine.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/travel-workout-routine/travel-workout-routine-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/travel-workout-routine.html">Travel Workout Routine That Fits in a Carry-On</a></h3>
@@ -295,6 +384,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/studio-flat-workout-setup.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/studio-flat-workout-setup/studio-flat-workout-setup-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Small Space</p>
           <h3 class="card__title"><a href="../posts/studio-flat-workout-setup.html">Training in a Studio Flat: A Real Layout Walkthrough</a></h3>

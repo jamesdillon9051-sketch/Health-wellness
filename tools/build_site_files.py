@@ -82,6 +82,11 @@ comparison, or a training-week grid, drawn by `tools/figures.py` and composed by
 honour, no attribution to carry and no takedown risk. Regenerate the set any time
 with `python3 tools/make_images.py`.
 
+Each post also has a **cover** variant (`<slug>-cover.jpg`) with every word
+stripped out, used behind the headline on the front-page mosaic and the category
+thumbnails. Those are drawn on a saturated ground in one of three tones of the
+section's hue, so a grid of twenty does not read as one flat block of colour.
+
 The briefs below describe **optional** photography, kept in case you ever
 commission real photos. If you do, overwrite the file at the same path — the alt
 text describes the diagram, so update it too. `tools/make_placeholders.py` still

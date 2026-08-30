@@ -17,22 +17,60 @@ LINE, LINE_STRONG, MUTED = '#E5E1D9', '#C7C1B6', '#5E646D'
 FAR = '#A7A29A'          # limbs on the far side of the body
 
 PILLAR_COLOURS = {
- 'bodyweight-strength':  ('#C62F27', '#FDECEA'),
- 'quick-workouts':       ('#0A7365', '#E3F5F2'),
- 'small-space-training': ('#5C3BD6', '#EDE8FD'),
- 'minimal-gear':         ('#A96504', '#FDF0DC'),
- 'habits-recovery':      ('#268543', '#E6F5EA'),
+ # name: (deep accent, pale page ground, vivid cover ground, ink on that vivid)
+ 'bodyweight-strength':  ('#C62F27', '#FDECEA', '#E8483F', '#14161A'),
+ 'quick-workouts':       ('#0A7365', '#E3F5F2', '#0E9C8A', '#14161A'),
+ 'small-space-training': ('#5C3BD6', '#EDE8FD', '#6B4CE0', '#FFFFFF'),
+ 'minimal-gear':         ('#A96504', '#FDF0DC', '#E8930C', '#14161A'),
+ 'habits-recovery':      ('#268543', '#E6F5EA', '#2E9E4F', '#14161A'),
 }
+DEFAULT_PILLAR = ('#3A32A8', '#FDFCFA', '#4F46C4', '#FFFFFF')
 
 
-def set_pillar(name):
-    """Point ACCENT and the paper ground at one section's colour.
+def _lum(h):
+    def ch(c):
+        c /= 255.0
+        return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+    h = h.lstrip('#')
+    r, g, b = (int(h[i:i+2], 16) for i in (0, 2, 4))
+    return 0.2126 * ch(r) + 0.7152 * ch(g) + 0.0722 * ch(b)
 
-    Called once per image before composing. The deep tone is used rather than
-    the vivid one because these marks are small on a light ground.
+
+def best_on(bg):
+    """Whichever of ink or white has more contrast against this ground."""
+    l = _lum(bg)
+    ink = (max(l, _lum('#14161A')) + 0.05) / (min(l, _lum('#14161A')) + 0.05)
+    wht = (1.05) / (l + 0.05)
+    return '#14161A' if ink >= wht else '#FFFFFF'
+
+
+def set_pillar(name, mode='page', tone=0):
+    """Point the palette at one section's colour.
+
+    mode='page'  pale ground, dark figure - the in-article diagrams.
+    mode='cover' vivid ground, contrasting figure - the magazine card art,
+                 which sits under a dark scrim and needs real colour presence.
+                 White is used on violet only; ink clears 4.5:1 on the rest.
     """
-    global ACCENT, PAPER
-    ACCENT, PAPER = PILLAR_COLOURS.get(name, ('#3A32A8', '#FDFCFA'))
+    global ACCENT, PAPER, INK, NAVY, LINE, LINE_STRONG, FAR, MUTED
+    deep, pale, vivid, on = PILLAR_COLOURS.get(name, DEFAULT_PILLAR)
+    if mode == 'cover':
+        # Three tones of the same hue. Twenty cards in one section all on the
+        # identical ground reads as a wall of colour rather than a set of
+        # articles, so each slug lands on one of three steps.
+        vivid = [vivid, deep, tuple_blend(vivid, '#14161A', 0.28)][tone % 3]
+        on = best_on(vivid)
+        ACCENT, PAPER = on, vivid
+        INK = NAVY = FAR = on
+        LINE = tuple_blend(vivid, on, 0.16)
+        LINE_STRONG = tuple_blend(vivid, on, 0.34)
+        MUTED = tuple_blend(vivid, on, 0.55)
+    else:
+        ACCENT, PAPER = deep, pale
+        INK = NAVY = '#14161A'
+        FAR, MUTED = '#A7A29A', '#5E646D'
+        LINE, LINE_STRONG = '#E5E1D9', '#C7C1B6'
+
 
 # --- poses -----------------------------------------------------------------
 # Joints: head (centre), neck, shoulder, elbow, wrist, hip, knee, ankle, toe.

@@ -151,3 +151,26 @@ def exercise_grid(title, eyebrow, caption, items, w=1200, h=800):
         o.append(F.label(cx + cw / 2, cy + chh + 30, lab, size=18, weight=600,
                          colour=F.NAVY, anchor='middle'))
     return F.svg(w, h, '\n'.join(o))
+
+
+def cover(pose_a, pose_b=None, w=1200, h=900):
+    """A text-free card image, for the magazine grid.
+
+    The hero diagrams carry their own title and caption, which makes them
+    unusable behind an overlaid headline. This is the same artwork with every
+    word stripped out, so the card can put its own text on top.
+    """
+    o = [F.grid(w, h), F.frame(w, h, m=34)]
+    if pose_b:
+        bb = F.union_bbox([pose_a, pose_b])
+        bw, gap = int(w * 0.40), int(w * 0.04)
+        x0 = (w - (2 * bw + gap)) / 2
+        for i, pose in enumerate((pose_a, pose_b)):
+            box = (x0 + i * (bw + gap), h * 0.10, bw, h * 0.78)
+            o.append(F.support(box, pose, bb, 10))
+            o.append(F.figure(pose, box, stroke=13, bb=bb))
+    else:
+        box = (w * 0.10, h * 0.08, w * 0.80, h * 0.84)
+        o.append(F.support(box, pose_a, None, 24))
+        o.append(F.figure(pose_a, box, stroke=15))
+    return F.svg(w, h, '\n'.join(o))

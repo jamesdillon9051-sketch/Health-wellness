@@ -87,6 +87,19 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ===== SHARED HEADER — keep identical across all pages ===== -->
+<div class="ticker">
+  <div class="wrap ticker__inner">
+    <span class="ticker__label">Latest <span>guides</span></span>
+    <ul class="ticker__list">
+        <li><a href="../posts/bodyweight-strength-training-at-home.html">The Complete Guide to Bodyweight Strength Training at Home</a></li>
+        <li><a href="../posts/bodyweight-exercise-progressions.html">Bodyweight Exercise Progressions: Beginner to Advanced</a></li>
+        <li><a href="../posts/short-workouts-guide.html">The Busy Person's Guide to Training in Under 30 Minutes</a></li>
+        <li><a href="../posts/4-week-home-workout-plan.html">A 4-Week Home Workout Plan for Complete Beginners</a></li>
+        <li><a href="../posts/small-apartment-workout-guide.html">The Complete Guide to Working Out in a Small Apartment</a></li>
+    </ul>
+  </div>
+</div>
+
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="../index.html">
@@ -99,11 +112,16 @@
         <li><a class="nav__link" href="../categories/bodyweight-strength.html">Bodyweight</a></li>
         <li><a class="nav__link" href="../categories/quick-workouts.html">Quick Workouts</a></li>
         <li><a class="nav__link" href="../categories/small-space-training.html">Small Space</a></li>
-        <li><a class="nav__link" href="../categories/minimal-gear.html" aria-current="page">Gear</a></li>
+        <li><a class="nav__link" href="../categories/minimal-gear.html">Gear</a></li>
         <li><a class="nav__link" href="../categories/habits-recovery.html">Habits</a></li>
         <li><a class="nav__link" href="../about.html">About</a></li>
       </ul>
     </nav>
+
+    <div class="header-actions">
+      <span class="header-actions__social"><a class="icon-btn" href="../index.html" aria-label="RSS feed"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3v2.5c5 0 9.5 4.5 9.5 9.5H15C15 8.4 9.6 3 3 3zm0 5v2.5c2.2 0 4 1.8 4 4H9.5C9.5 10.9 6.6 8 3 8zm1.5 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a><a class="icon-btn" href="../contact.html" aria-label="Contact"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14v10H2V4zm1.6 1.4L9 9.2l5.4-3.8H3.6zM3.5 7v5.6h11V7L9 10.8 3.5 7z"/></svg></a></span>
+      <a class="icon-btn" href="../index.html" aria-label="Search"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11.7 10.3a6 6 0 1 0-1.4 1.4l3.5 3.5 1.4-1.4-3.5-3.5zM7 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg></a>
+    </div>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -112,16 +130,30 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="../categories/bodyweight-strength.html">Bodyweight Strength</a></li>
-      <li><a class="mobile-nav__link" href="../categories/quick-workouts.html">Quick Workouts &amp; Plans</a></li>
-      <li><a class="mobile-nav__link" href="../categories/small-space-training.html">Small-Space Training</a></li>
-      <li><a class="mobile-nav__link" href="../categories/minimal-gear.html">Minimal Gear</a></li>
-      <li><a class="mobile-nav__link" href="../categories/habits-recovery.html">Habits &amp; Recovery</a></li>
+      <li><a class="mobile-nav__link" href="../categories/bodyweight-strength.html">Bodyweight</a></li>
+      <li><a class="mobile-nav__link" href="../categories/quick-workouts.html">Quick Workouts</a></li>
+      <li><a class="mobile-nav__link" href="../categories/small-space-training.html">Small Space</a></li>
+      <li><a class="mobile-nav__link" href="../categories/minimal-gear.html">Gear</a></li>
+      <li><a class="mobile-nav__link" href="../categories/habits-recovery.html">Habits</a></li>
       <li><a class="mobile-nav__link" href="../about.html">About</a></li>
       <li><a class="mobile-nav__link" href="../contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
+
+<div class="utility-bar">
+  <div class="wrap utility-bar__inner">
+    <nav aria-label="Secondary">
+      <ul>
+        <li><a href="../categories/quick-workouts.html">Start here</a></li>
+        <li><a href="../posts/4-week-home-workout-plan.html">The 4-week plan</a></li>
+        <li><a href="../medical-disclaimer.html">Medical disclaimer</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <span class="utility-bar__date" data-today>Updated weekly</span>
+  </div>
+</div>
 <!-- ===== /SHARED HEADER ===== -->
 
 <main id="main">
@@ -147,12 +179,15 @@
   </div>
 
   <section class="section section--flush-top wrap">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>Start with these</h2>
       <span class="meta">The two comprehensive guides in this topic</span>
     </div>
     <div class="grid grid--2">
       <article class="card">
+        <a class="card__media" href="../posts/minimalist-home-gym-guide.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/minimalist-home-gym-guide/minimalist-home-gym-guide-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Pillar guide</p>
           <h3 class="card__title"><a href="../posts/minimalist-home-gym-guide.html">The Minimalist Home Gym: What to Buy First (and What to Skip)</a></h3>
@@ -160,6 +195,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/resistance-bands-guide.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/resistance-bands-guide/resistance-bands-guide-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Pillar guide</p>
           <h3 class="card__title"><a href="../posts/resistance-bands-guide.html">Resistance Bands: The Complete Home Training Guide</a></h3>
@@ -170,12 +208,15 @@
   </section>
 
   <section class="section section--flush-top wrap">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>All 20 guides</h2>
       <span class="meta">Newest first</span>
     </div>
     <div class="grid grid--3">
       <article class="card">
+        <a class="card__media" href="../posts/resistance-band-full-body-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/resistance-band-full-body-workout/resistance-band-full-body-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/resistance-band-full-body-workout.html">Resistance Band Full-Body Workout (20 Minutes)</a></h3>
@@ -183,6 +224,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/loop-bands-vs-tube-bands.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/loop-bands-vs-tube-bands/loop-bands-vs-tube-bands-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/loop-bands-vs-tube-bands.html">Loop Bands vs Tube Bands: Which Should You Buy?</a></h3>
@@ -190,6 +234,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/one-dumbbell-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/one-dumbbell-workout/one-dumbbell-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/one-dumbbell-workout.html">One Dumbbell, Full Body: A Complete Workout</a></h3>
@@ -197,6 +244,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/adjustable-dumbbells-buying-guide.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/adjustable-dumbbells-buying-guide/adjustable-dumbbells-buying-guide-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/adjustable-dumbbells-buying-guide.html">Adjustable Dumbbells: What to Look For on a Budget</a></h3>
@@ -204,6 +254,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/doorway-pull-up-bar-guide.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/doorway-pull-up-bar-guide/doorway-pull-up-bar-guide-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/doorway-pull-up-bar-guide.html">Doorway Pull-Up Bars: Safety, Fit and Wall Damage</a></h3>
@@ -211,6 +264,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/gymnastic-rings-at-home.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/gymnastic-rings-at-home/gymnastic-rings-at-home-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/gymnastic-rings-at-home.html">Gymnastic Rings at Home: Setup and First Workouts</a></h3>
@@ -218,6 +274,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/furniture-sliders-workout.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/furniture-sliders-workout/furniture-sliders-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/furniture-sliders-workout.html">Furniture Sliders for Core and Leg Training</a></h3>
@@ -225,6 +284,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/kettlebell-vs-dumbbell-home.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/kettlebell-vs-dumbbell-home/kettlebell-vs-dumbbell-home-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/kettlebell-vs-dumbbell-home.html">Kettlebell vs Dumbbell for a Small Home Setup</a></h3>
@@ -232,6 +294,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/cheap-home-gym-equipment.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/cheap-home-gym-equipment/cheap-home-gym-equipment-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/cheap-home-gym-equipment.html">The Best Cheap Home Gym Equipment Under $50</a></h3>
@@ -239,6 +304,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/diy-home-gym-equipment.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/diy-home-gym-equipment/diy-home-gym-equipment-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/diy-home-gym-equipment.html">DIY Home Gym Equipment From Things You Already Own</a></h3>
@@ -246,6 +314,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/suspension-trainer-home-review.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/suspension-trainer-home-review/suspension-trainer-home-review-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/suspension-trainer-home-review.html">Suspension Trainers (TRX-Style): Worth It at Home?</a></h3>
@@ -253,6 +324,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/jump-rope-alternatives.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/jump-rope-alternatives/jump-rope-alternatives-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/jump-rope-alternatives.html">Jump Rope Alternatives for Apartments</a></h3>
@@ -260,6 +334,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/weighted-vest-training.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/weighted-vest-training/weighted-vest-training-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/weighted-vest-training.html">Weighted Vest Training at Home: Who It's For</a></h3>
@@ -267,6 +344,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/ab-wheel-progression.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/ab-wheel-progression/ab-wheel-progression-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/ab-wheel-progression.html">Ab Wheel: Progressions and Whether You Need One</a></h3>
@@ -274,6 +354,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/yoga-mat-vs-exercise-mat.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/yoga-mat-vs-exercise-mat/yoga-mat-vs-exercise-mat-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/yoga-mat-vs-exercise-mat.html">Yoga Mat vs Exercise Mat vs Puzzle Tiles</a></h3>
@@ -281,6 +364,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/best-home-workout-apps.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/best-home-workout-apps/best-home-workout-apps-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/best-home-workout-apps.html">Best Apps for Home Workouts (Free and Paid)</a></h3>
@@ -288,6 +374,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/do-you-need-a-workout-bench.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/do-you-need-a-workout-bench/do-you-need-a-workout-bench-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/do-you-need-a-workout-bench.html">Do You Need a Bench for Home Workouts?</a></h3>
@@ -295,6 +384,9 @@
         </div>
       </article>
       <article class="card">
+        <a class="card__media" href="../posts/home-gym-under-100.html" tabindex="-1" aria-hidden="true">
+          <img src="../assets/images/home-gym-under-100/home-gym-under-100-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        </a>
         <div class="card__body">
           <p class="eyebrow eyebrow--slate">Gear</p>
           <h3 class="card__title"><a href="../posts/home-gym-under-100.html">Home Gym Setup Under $100: A Complete Shopping List</a></h3>

@@ -114,6 +114,17 @@
     });
   }
 
+  /* --- 6a. Masthead date ---------------------------------------------------
+     A dateline is part of why a news front page reads as current. Written by
+     JS so a static file never shows a stale date.
+     ------------------------------------------------------------------------ */
+  var today = document.querySelector('[data-today]');
+  if (today) {
+    today.textContent = new Date().toLocaleDateString(undefined, {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+  }
+
   /* --- 6. Footer year ------------------------------------------------------ */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());

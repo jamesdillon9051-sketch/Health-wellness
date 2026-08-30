@@ -70,6 +70,19 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ===== SHARED HEADER — keep identical across all pages ===== -->
+<div class="ticker">
+  <div class="wrap ticker__inner">
+    <span class="ticker__label">Latest <span>guides</span></span>
+    <ul class="ticker__list">
+        <li><a href="posts/bodyweight-strength-training-at-home.html">The Complete Guide to Bodyweight Strength Training at Home</a></li>
+        <li><a href="posts/bodyweight-exercise-progressions.html">Bodyweight Exercise Progressions: Beginner to Advanced</a></li>
+        <li><a href="posts/short-workouts-guide.html">The Busy Person's Guide to Training in Under 30 Minutes</a></li>
+        <li><a href="posts/4-week-home-workout-plan.html">A 4-Week Home Workout Plan for Complete Beginners</a></li>
+        <li><a href="posts/small-apartment-workout-guide.html">The Complete Guide to Working Out in a Small Apartment</a></li>
+    </ul>
+  </div>
+</div>
+
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="index.html">
@@ -88,6 +101,11 @@
       </ul>
     </nav>
 
+    <div class="header-actions">
+      <span class="header-actions__social"><a class="icon-btn" href="index.html" aria-label="RSS feed"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3v2.5c5 0 9.5 4.5 9.5 9.5H15C15 8.4 9.6 3 3 3zm0 5v2.5c2.2 0 4 1.8 4 4H9.5C9.5 10.9 6.6 8 3 8zm1.5 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a><a class="icon-btn" href="contact.html" aria-label="Contact"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14v10H2V4zm1.6 1.4L9 9.2l5.4-3.8H3.6zM3.5 7v5.6h11V7L9 10.8 3.5 7z"/></svg></a></span>
+      <a class="icon-btn" href="index.html" aria-label="Search"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11.7 10.3a6 6 0 1 0-1.4 1.4l3.5 3.5 1.4-1.4-3.5-3.5zM7 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg></a>
+    </div>
+
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -95,35 +113,117 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="categories/bodyweight-strength.html">Bodyweight Strength</a></li>
-      <li><a class="mobile-nav__link" href="categories/quick-workouts.html">Quick Workouts &amp; Plans</a></li>
-      <li><a class="mobile-nav__link" href="categories/small-space-training.html">Small-Space Training</a></li>
-      <li><a class="mobile-nav__link" href="categories/minimal-gear.html">Minimal Gear</a></li>
-      <li><a class="mobile-nav__link" href="categories/habits-recovery.html">Habits &amp; Recovery</a></li>
+      <li><a class="mobile-nav__link" href="categories/bodyweight-strength.html">Bodyweight</a></li>
+      <li><a class="mobile-nav__link" href="categories/quick-workouts.html">Quick Workouts</a></li>
+      <li><a class="mobile-nav__link" href="categories/small-space-training.html">Small Space</a></li>
+      <li><a class="mobile-nav__link" href="categories/minimal-gear.html">Gear</a></li>
+      <li><a class="mobile-nav__link" href="categories/habits-recovery.html">Habits</a></li>
       <li><a class="mobile-nav__link" href="about.html">About</a></li>
       <li><a class="mobile-nav__link" href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
+
+<div class="utility-bar">
+  <div class="wrap utility-bar__inner">
+    <nav aria-label="Secondary">
+      <ul>
+        <li><a href="categories/quick-workouts.html">Start here</a></li>
+        <li><a href="posts/4-week-home-workout-plan.html">The 4-week plan</a></li>
+        <li><a href="medical-disclaimer.html">Medical disclaimer</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <span class="utility-bar__date" data-today>Updated weekly</span>
+  </div>
+</div>
 <!-- ===== /SHARED HEADER ===== -->
 
 <main id="main">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero__inner">
-      <p class="eyebrow">No gym · No commute · No excuses needed</p>
-      <h1>You don't need a gym.<br>You need <em>twenty minutes</em> and a bit of floor.</h1>
-      <p>Honest, tested home training for people with a full-time job, a small flat and no interest in a £45-a-month direct debit they'll use twice.</p>
-      <div class="hero__actions">
-        <a class="btn btn--accent" href="posts/4-week-home-workout-plan.html">Start the 4-week plan</a>
-        <a class="btn btn--ghost-light" href="posts/15-minute-full-body-workout.html">Try a 15-minute workout</a>
-      </div>
-      <div class="hero__stats">
-        <div class="hero__stat"><b>100</b><span>Free guides</span></div>
-        <div class="hero__stat"><b>0</b><span>Equipment required</span></div>
-        <div class="hero__stat"><b>15&ndash;30</b><span>Minutes per session</span></div>
-      </div>
+  <!-- FRONT PAGE MOSAIC -->
+  <section class="section section--flush-top wrap">
+    <div class="mosaic">
+      <a class="tile" href="posts/4-week-home-workout-plan.html" data-pillar="quick-workouts">
+        <img src="assets/images/4-week-home-workout-plan/4-week-home-workout-plan-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Quick workouts</span>
+          <span class="tile__title">A 4-Week Home Workout Plan for Complete Beginners</span>
+          <span class="tile__standfirst">Twelve sessions, no equipment, and a progression that assumes you will miss a day — because you will.</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
+      <a class="tile" href="posts/15-minute-full-body-workout.html" data-pillar="quick-workouts">
+        <img src="assets/images/15-minute-full-body-workout/15-minute-full-body-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Quick workouts</span>
+          <span class="tile__title">15-Minute Full-Body Workout at Home (No Equipment)</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
+      <a class="tile" href="posts/quiet-home-workouts.html" data-pillar="small-space-training">
+        <img src="assets/images/quiet-home-workouts/quiet-home-workouts-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Small space</span>
+          <span class="tile__title">Quiet Home Workouts: Train Without Annoying Your Neighbours</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
+      <a class="tile" href="posts/minimalist-home-gym-guide.html" data-pillar="minimal-gear">
+        <img src="assets/images/minimalist-home-gym-guide/minimalist-home-gym-guide-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Gear</span>
+          <span class="tile__title">The Minimalist Home Gym: What to Buy First (and What to Skip)</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
+      <a class="tile" href="posts/stick-to-home-workout-habit.html" data-pillar="habits-recovery">
+        <img src="assets/images/stick-to-home-workout-habit/stick-to-home-workout-habit-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Habits</span>
+          <span class="tile__title">How to Actually Stick to a Home Workout Habit</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="section-tab">
+      <h2>More this week</h2>
+      <span class="meta">Four to start with</span>
+    </div>
+    <div class="strip">
+      <a class="tile" href="posts/no-jump-cardio.html" data-pillar="small-space-training">
+        <img src="assets/images/no-jump-cardio/no-jump-cardio-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Small space</span>
+          <span class="tile__title">No-Jump Cardio: 12 Quiet Alternatives to Burpees</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
+      <a class="tile" href="posts/push-up-progressions-for-beginners.html" data-pillar="bodyweight-strength">
+        <img src="assets/images/push-up-progressions-for-beginners/push-up-progressions-for-beginners-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Bodyweight</span>
+          <span class="tile__title">Push-Up Progressions for Absolute Beginners (Wall to Full)</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
+      <a class="tile" href="posts/one-dumbbell-workout.html" data-pillar="minimal-gear">
+        <img src="assets/images/one-dumbbell-workout/one-dumbbell-workout-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Gear</span>
+          <span class="tile__title">One Dumbbell, Full Body: A Complete Workout</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
+      <a class="tile" href="posts/workout-at-home-with-kids.html" data-pillar="small-space-training">
+        <img src="assets/images/workout-at-home-with-kids/workout-at-home-with-kids-cover.jpg" alt="" width="1200" height="900" loading="lazy">
+        <span class="tile__body">
+          <span class="tile__badge">Small space</span>
+          <span class="tile__title">How to Work Out at Home With Kids Around</span>
+          <span class="tile__meta">Sam Reyes</span>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -132,7 +232,7 @@
 
   <!-- PILLAR NAVIGATION -->
   <section class="section wrap">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>Start here</h2>
       <a class="section-head__link" href="#latest">Latest posts &rarr;</a>
     </div>
@@ -179,7 +279,7 @@
 
   <!-- FEATURED POSTS -->
   <section class="section section--flush-top wrap">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>The essential five</h2>
       <span class="meta">Read these first</span>
     </div>
@@ -289,7 +389,7 @@
 
   <!-- LATEST POSTS -->
   <section class="section section--flush-top wrap" id="latest">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>Latest</h2>
       <span class="meta">Updated weekly</span>
     </div>

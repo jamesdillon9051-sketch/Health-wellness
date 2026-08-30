@@ -78,6 +78,28 @@ Both load from Google Fonts as variable faces — one request, roughly 150 KB
 over the wire once the browser picks its subset. The diagrams are drawn in
 Bricolage too, from the local font file, so images and page match.
 
+## The front page
+
+The site is laid out as a news magazine rather than a blog:
+
+- **Ticker** — a breaking-news strip carrying the five pillar guides
+- **Masthead** — brand, primary nav, RSS/contact/search
+- **Utility bar** — secondary links and a dateline, written by JS so a static
+  file never shows a stale date
+- **Mosaic** — one lead story plus a 2×2 of seconds, every cell an image tile
+  with a category badge and an overlaid headline
+- **Section tabs** — headings as a filled tab sitting on a rule, in the
+  section's colour
+- **Strip** — a four-across thumbnail row
+
+The five pillar colours do the sorting, which is how a magazine grid signals
+section. Each card image is a text-free **cover** variant of the post's diagram;
+the hero versions carry their own titles and cannot take an overlaid headline.
+
+The ticker, masthead and utility bar are hand-copied into all 111 files like the
+other shared blocks — `python3 tools/magazine_chrome.py` rewrites them, and
+`tools/check-sync.sh` fails if any page is missing one.
+
 ## Section templates
 
 Each part of the site is laid out as its own place:

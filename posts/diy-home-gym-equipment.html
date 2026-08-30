@@ -108,6 +108,19 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ===== SHARED HEADER — keep identical across all pages ===== -->
+<div class="ticker">
+  <div class="wrap ticker__inner">
+    <span class="ticker__label">Latest <span>guides</span></span>
+    <ul class="ticker__list">
+        <li><a href="../posts/bodyweight-strength-training-at-home.html">The Complete Guide to Bodyweight Strength Training at Home</a></li>
+        <li><a href="../posts/bodyweight-exercise-progressions.html">Bodyweight Exercise Progressions: Beginner to Advanced</a></li>
+        <li><a href="../posts/short-workouts-guide.html">The Busy Person's Guide to Training in Under 30 Minutes</a></li>
+        <li><a href="../posts/4-week-home-workout-plan.html">A 4-Week Home Workout Plan for Complete Beginners</a></li>
+        <li><a href="../posts/small-apartment-workout-guide.html">The Complete Guide to Working Out in a Small Apartment</a></li>
+    </ul>
+  </div>
+</div>
+
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="../index.html">
@@ -120,11 +133,16 @@
         <li><a class="nav__link" href="../categories/bodyweight-strength.html">Bodyweight</a></li>
         <li><a class="nav__link" href="../categories/quick-workouts.html">Quick Workouts</a></li>
         <li><a class="nav__link" href="../categories/small-space-training.html">Small Space</a></li>
-        <li><a class="nav__link" href="../categories/minimal-gear.html" aria-current="page">Gear</a></li>
+        <li><a class="nav__link" href="../categories/minimal-gear.html">Gear</a></li>
         <li><a class="nav__link" href="../categories/habits-recovery.html">Habits</a></li>
         <li><a class="nav__link" href="../about.html">About</a></li>
       </ul>
     </nav>
+
+    <div class="header-actions">
+      <span class="header-actions__social"><a class="icon-btn" href="../index.html" aria-label="RSS feed"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3v2.5c5 0 9.5 4.5 9.5 9.5H15C15 8.4 9.6 3 3 3zm0 5v2.5c2.2 0 4 1.8 4 4H9.5C9.5 10.9 6.6 8 3 8zm1.5 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a><a class="icon-btn" href="../contact.html" aria-label="Contact"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14v10H2V4zm1.6 1.4L9 9.2l5.4-3.8H3.6zM3.5 7v5.6h11V7L9 10.8 3.5 7z"/></svg></a></span>
+      <a class="icon-btn" href="../index.html" aria-label="Search"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11.7 10.3a6 6 0 1 0-1.4 1.4l3.5 3.5 1.4-1.4-3.5-3.5zM7 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg></a>
+    </div>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -133,16 +151,30 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="../categories/bodyweight-strength.html">Bodyweight Strength</a></li>
-      <li><a class="mobile-nav__link" href="../categories/quick-workouts.html">Quick Workouts &amp; Plans</a></li>
-      <li><a class="mobile-nav__link" href="../categories/small-space-training.html">Small-Space Training</a></li>
-      <li><a class="mobile-nav__link" href="../categories/minimal-gear.html">Minimal Gear</a></li>
-      <li><a class="mobile-nav__link" href="../categories/habits-recovery.html">Habits &amp; Recovery</a></li>
+      <li><a class="mobile-nav__link" href="../categories/bodyweight-strength.html">Bodyweight</a></li>
+      <li><a class="mobile-nav__link" href="../categories/quick-workouts.html">Quick Workouts</a></li>
+      <li><a class="mobile-nav__link" href="../categories/small-space-training.html">Small Space</a></li>
+      <li><a class="mobile-nav__link" href="../categories/minimal-gear.html">Gear</a></li>
+      <li><a class="mobile-nav__link" href="../categories/habits-recovery.html">Habits</a></li>
       <li><a class="mobile-nav__link" href="../about.html">About</a></li>
       <li><a class="mobile-nav__link" href="../contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
+
+<div class="utility-bar">
+  <div class="wrap utility-bar__inner">
+    <nav aria-label="Secondary">
+      <ul>
+        <li><a href="../categories/quick-workouts.html">Start here</a></li>
+        <li><a href="../posts/4-week-home-workout-plan.html">The 4-week plan</a></li>
+        <li><a href="../medical-disclaimer.html">Medical disclaimer</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <span class="utility-bar__date" data-today>Updated weekly</span>
+  </div>
+</div>
 <!-- ===== /SHARED HEADER ===== -->
 
 <main id="main">
@@ -395,7 +427,7 @@
   </div><!-- /.post-layout -->
 
   <section class="section wrap related">
-    <div class="section-head">
+    <div class="section-tab">
       <h2>Related reading</h2>
       <a class="section-head__link" href="../categories/minimal-gear.html">All minimal gear &rarr;</a>
     </div>
