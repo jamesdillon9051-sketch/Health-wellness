@@ -575,6 +575,10 @@ hr {
   transition: transform 0.15s ease, border-color 0.15s ease;
 }
 .pillar-tile:hover { transform: translateY(-2px); border-color: var(--line-strong); border-left-color: var(--accent-deep); }
+.pillar-tile__num,
+.pillar-tile__name,
+.pillar-tile__desc,
+.pillar-tile__count { display: block; }   /* spans in the markup — needed for margin-top */
 .pillar-tile__num {
   font-family: var(--font-display);
   font-size: var(--text-xs);

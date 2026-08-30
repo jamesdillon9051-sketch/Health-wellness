@@ -120,7 +120,7 @@ def plan_for(slug, pillar):
     return FALLBACK[pillar]
 
 
-def short_title(t, limit=54):
+def short_title(t, limit=64):
     t = re.split(r':\s', t)[0]
     return t if len(t) <= limit else t[:limit - 1].rstrip(' ,') + '…'
 

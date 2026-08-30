@@ -30,44 +30,43 @@ def _chrome(title, eyebrow, caption, w=None, h=None):
     # title wraps to two lines at a rough character count
     words, lines, cur = title.split(), [], ''
     for w in words:
-        if len(cur + ' ' + w) <= 34 or not cur:
+        if len(cur + ' ' + w) <= 40 or not cur:
             cur = (cur + ' ' + w).strip()
         else:
             lines.append(cur); cur = w
     lines.append(cur)
     for i, ln in enumerate(lines[:2]):
-        o.append(F.label(84, 158 + i * 44, ln, size=38, weight=700))
+        o.append(F.label(84, 158 + i * 44, ln, size=34, weight=700))
     o.append('<rect x="84" y="%d" width="76" height="5" fill="%s"/>'
              % (158 + min(len(lines), 2) * 44 - 24, F.YELLOW))
     if caption:
-        o.append(F.label(84, h - 74, caption, size=20, weight=400, colour=F.MUTED))
+        o.append(F.label(84, h - 44, caption, size=20, weight=400, colour=F.MUTED))
     return o
 
 
 def two_panel(title, eyebrow, caption, pose_a, pose_b, label_a, label_b, cues=()):
     o = _chrome(title, eyebrow, caption)
-    o += _cues(cues)
-    bw, gap, x0 = 280, 60, 520
+    bw, gap = 330, 96
+    x0 = (W - (2 * bw + gap)) / 2
     bb = F.union_bbox([pose_a, pose_b])        # one scale, one ground, both panels
     for i, (pose, lab) in enumerate(((pose_a, label_a), (pose_b, label_b))):
         x = x0 + i * (bw + gap)
-        box = (x, 225, bw, 260)
+        box = (x, 268, bw, 250)
         o.append(F.support(box, pose, bb, 10))
         o.append(F.figure(pose, box, stroke=8, bb=bb))
-        o.append(F.label(x + bw / 2, 528, lab, size=18, weight=600,
+        o.append(F.label(x + bw / 2, 524, lab, size=19, weight=700,
                          colour=F.NAVY, anchor='middle', mono=True))
-    o.append(F.arrow(x0 + bw + 8, 355, x0 + bw + gap - 8, 355, w=5))
+    o.append(F.arrow(x0 + bw + 20, 392, x0 + bw + gap - 20, 392, w=5))
     return F.svg(W, H, '\n'.join(o))
 
 
 def one_panel(title, eyebrow, caption, pose, note='', cues=()):
     o = _chrome(title, eyebrow, caption)
-    o += _cues(cues)
-    box = (620, 180, 480, 320)
+    box = ((W - 520) / 2, 250, 520, 280)
     o.append(F.support(box, pose, None, 30))
     o.append(F.figure(pose, box, stroke=9))
     if note:
-        o.append(F.label(860, 545, note, size=18, weight=600, colour=F.ACCENT,
+        o.append(F.label(W / 2, 546, note, size=19, weight=700, colour=F.NAVY,
                          anchor='middle', mono=True))
     return F.svg(W, H, '\n'.join(o))
 
@@ -84,12 +83,11 @@ def week_grid(title, eyebrow, caption, sessions=3, cues=(), note='', w=None, h=N
     """
     w, h = w or W, h or H
     o = _chrome(title, eyebrow, caption, w, h)
-    o += _cues(cues)
     pat = {1: [2], 2: [1, 4], 3: [0, 2, 4], 4: [0, 1, 3, 5], 5: [0, 1, 2, 4, 5],
            6: [0, 1, 2, 3, 4, 5], 7: [0, 1, 2, 3, 4, 5, 6]}.get(sessions, [0, 2, 4])
     cw, ch, gap = 74, 92, 12
-    x0 = (w - (7 * cw + 6 * gap)) / 2 if h > 700 else 1128 - (7 * cw + 6 * gap)
-    y0 = 330 if h > 700 else 246
+    x0 = (w - (7 * cw + 6 * gap)) / 2
+    y0 = 380 if h > 700 else 290
     for i, d in enumerate(DAYS):
         x = x0 + i * (cw + gap)
         on = i in pat
