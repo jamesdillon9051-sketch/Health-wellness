@@ -18,7 +18,7 @@ for pl in R.PILLARS:
 for p in R.POSTS:
     add('posts/%s.html' % p['slug'], '0.8' if p['kind'] == 'hub' else '0.7', 'monthly')
 for page in ['about.html', 'contact.html', 'privacy-policy.html', 'medical-disclaimer.html',
-             'credits.html']:
+             'credits.html', 'search.html']:
     add(page, '0.5', 'yearly')
 
 body = '\n'.join(

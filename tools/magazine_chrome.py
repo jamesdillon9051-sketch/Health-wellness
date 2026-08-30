@@ -26,10 +26,10 @@ ICONS = {
 }
 
 
-def icon(name, label, href='#'):
-    return ('<a class="icon-btn" href="%s" aria-label="%s">'
+def icon(name, label, href='#', attrs=''):
+    return ('<a class="icon-btn" href="%s" aria-label="%s"%s>'
             '<svg viewBox="0 0 18 18" aria-hidden="true">%s</svg></a>'
-            % (href, label, ICONS[name]))
+            % (href, label, attrs, ICONS[name]))
 
 
 def chrome(depth):
@@ -106,7 +106,7 @@ def chrome(depth):
         items, d, links,
         icon('rss', 'RSS feed', d + 'index.html'),
         icon('mail', 'Contact', d + 'contact.html'),
-        icon('search', 'Search', d + 'index.html'),
+        icon('search', 'Search', d + 'search.html', ' data-search'),
         mob, d, d, d, d)
 
 

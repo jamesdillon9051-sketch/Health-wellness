@@ -17,6 +17,8 @@ for f in $files; do
   grep -q 'class="ticker"' "$f" || msg="$msg  missing ticker band\n"
   grep -q 'class="utility-bar"' "$f" || msg="$msg  missing utility bar\n"
   grep -q 'data-today' "$f" || msg="$msg  missing dateline\n"
+  grep -q 'search.js' "$f" || msg="$msg  missing search.js\n"
+  grep -q 'data-search' "$f" || msg="$msg  missing search button\n"
   grep -q 'medical-disclaimer.html' "$f" || msg="$msg  missing medical disclaimer link\n"
   grep -q 'style.css' "$f" || msg="$msg  missing stylesheet link\n"
   grep -q 'main.js' "$f" || msg="$msg  missing main.js\n"

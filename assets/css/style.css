@@ -1532,3 +1532,90 @@ body[data-hub] .lede { border-left: 0; padding-left: 0; font-size: var(--text-lg
 .credit { color: var(--muted); font-size: var(--text-xs); }
 .credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .credit a:hover { color: var(--accent-deep); }
+
+
+/* --------------------------------------------------------------------------
+   21. SEARCH
+   ——— Overlay on every page, and the standalone /search.html. ———
+   -------------------------------------------------------------------------- */
+.search {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(14,16,19,.55);
+  display: flex; justify-content: center;
+  padding: clamp(1rem, 6vh, 5rem) var(--gutter) var(--gutter);
+  overflow-y: auto;
+}
+.search[hidden] { display: none !important; }   /* display:flex outranks [hidden] */
+.search__panel {
+  background: var(--surface); width: 100%; max-width: 44rem; align-self: flex-start;
+  border-top: 4px solid var(--accent); box-shadow: 0 24px 60px rgba(14,16,19,.28);
+}
+.search__form { display: flex; align-items: center; gap: var(--space-xs);
+                padding: var(--space-s); border-bottom: var(--rule); }
+.search__form input {
+  flex: 1; min-width: 0; border: 0; background: none; padding: .4rem 0;
+  font-family: var(--font-display); font-size: var(--text-lg); color: var(--ink);
+}
+.search__form input:focus { outline: none; }
+.search__form input::-webkit-search-cancel-button { -webkit-appearance: none; }
+.search__close {
+  border: 1px solid var(--line-strong); background: none; cursor: pointer;
+  font-family: var(--font-display); font-size: var(--text-2xs); font-weight: 700;
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--muted); padding: .3rem .5rem;
+}
+.search__close:hover { color: var(--accent-deep); border-color: var(--accent); }
+
+.search__results { padding: var(--space-s); max-height: 62vh; overflow-y: auto; }
+.search__hint, .search__count {
+  font-family: var(--font-display); font-size: var(--text-sm); color: var(--muted);
+  margin: 0 0 var(--space-xs);
+}
+.search__list { list-style: none; margin: 0; padding: 0; }
+.search__list a {
+  display: block; padding: var(--space-xs) var(--space-2xs);
+  border-left: 3px solid transparent; text-decoration: none; color: inherit;
+}
+.search__list a:hover, .search__list a:focus {
+  background: var(--accent-tint); border-left-color: var(--accent); outline: none;
+}
+.search__cat {
+  display: block; font-family: var(--font-display); font-size: var(--text-2xs);
+  font-weight: 700; letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--accent-deep);
+}
+.search__title {
+  display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: var(--text-base); line-height: var(--leading-snug); color: var(--ink);
+  margin-top: 2px;
+}
+.search__desc {
+  display: block; font-size: var(--text-sm); color: var(--muted);
+  line-height: 1.5; margin-top: 2px;
+}
+.search mark, .search__results mark {
+  background: var(--highlight); color: var(--ink); padding: 0 .1em;
+}
+
+/* Each result is tinted by the section it belongs to. */
+.search__list a[data-pillar="bodyweight-strength"]  { --accent: var(--coral);  --accent-deep: var(--coral-deep);  --accent-tint: var(--coral-tint); }
+.search__list a[data-pillar="quick-workouts"]       { --accent: var(--teal);   --accent-deep: var(--teal-deep);   --accent-tint: var(--teal-tint); }
+.search__list a[data-pillar="small-space-training"] { --accent: var(--violet); --accent-deep: var(--violet-deep); --accent-tint: var(--violet-tint); }
+.search__list a[data-pillar="minimal-gear"]         { --accent: var(--amber);  --accent-deep: var(--amber-deep);  --accent-tint: var(--amber-tint); }
+.search__list a[data-pillar="habits-recovery"]      { --accent: var(--green);  --accent-deep: var(--green-deep);  --accent-tint: var(--green-tint); }
+
+/* The standalone page reuses the same result markup, unboxed. */
+.search-page .search__results { max-height: none; padding: 0; overflow: visible; }
+.search-page .search__form {
+  border: 2px solid var(--ink); padding: var(--space-s); margin-bottom: var(--space-l);
+}
+
+/* The no-JS browse list on search.html. */
+.post-index { list-style: none; margin: 0 0 var(--space-xl); padding: 0;
+              columns: 2; column-gap: var(--space-xl); }
+.post-index li { break-inside: avoid; margin-bottom: var(--space-2xs); }
+.post-index a { color: var(--ink); text-decoration: none;
+                border-bottom: 1px solid var(--line); display: inline-block;
+                padding-bottom: 1px; }
+.post-index a:hover { color: var(--accent-deep); border-bottom-color: var(--accent); }
+@media (max-width: 46rem) { .post-index { columns: 1; } }

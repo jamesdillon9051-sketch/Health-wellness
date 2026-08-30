@@ -78,6 +78,40 @@ Both load from Google Fonts as variable faces — one request, roughly 150 KB
 over the wire once the browser picks its subset. The diagrams are drawn in
 Bricolage too, from the local font file, so images and page match.
 
+## Search
+
+The site is static, so search runs in the browser against a prebuilt index.
+
+`assets/search-index.json` (~61 KB, roughly 15 KB gzipped) holds each post's
+title, standfirst, section headings and target keyword. It is fetched lazily the
+first time search is opened, so a normal page view never pays for it. Body text
+is deliberately excluded — 340,000 words would be several megabytes, and titles
+and headings already cover what people type.
+
+Matching requires **every** query token to appear somewhere, so "quiet
+apartment" will not return a post that only mentions apartments. Field weights
+order the results: title, then keyword, then heading, then standfirst. Pillar
+guides break ties upward.
+
+- **Open it** with the magnifying glass, `Ctrl`/`Cmd`+`K`, or `/`
+- **Navigate** with arrow keys, `Enter` to open the top hit, `Esc` to close
+
+`search.html` is the fallback and works with no JavaScript at all: it lists
+every guide grouped by section. With JavaScript the same page becomes a live
+filter and the browse list hides once you type.
+
+One deployment note: browsers block `fetch` of a local JSON file over
+`file://`, so search will not work if you open the site straight off disk. It
+is fine on any real server. The failure is handled — the panel offers the
+browse page instead of failing silently.
+
+Rebuild the index after editing posts:
+
+```
+python3 tools/build_search_index.py
+python3 tools/build_search_page.py
+```
+
 ## Images
 
 Every photograph is sourced from [Openverse](https://openverse.org/) and
