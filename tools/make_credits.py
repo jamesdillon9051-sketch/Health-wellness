@@ -23,6 +23,7 @@ except (IOError, ValueError):
 LICENCE_NAME = {
     'cc0': 'CC0 1.0 (public domain dedication)',
     'pdm': 'Public Domain Mark',
+    'public-domain': 'Public domain',
     'by': 'CC BY', 'by-sa': 'CC BY-SA', 'by-nc': 'CC BY-NC', 'by-nd': 'CC BY-ND',
 }
 
@@ -40,10 +41,13 @@ def rows():
             continue
         seen.add(f)
         lic = (p.get('license') or '').lower()
-        name = LICENCE_NAME.get(lic, lic.upper())
-        ver = p.get('license_version') or ''
-        if lic in ('by', 'by-sa', 'by-nc', 'by-nd') and ver:
-            name += ' ' + ver
+        if lic in LICENCE_NAME:
+            name = LICENCE_NAME[lic]
+        else:
+            bits = lic.split('-')                     # 'by-sa-4.0' -> CC BY-SA 4.0
+            ver = bits[-1] if bits and bits[-1][:1].isdigit() else ''
+            fam = '-'.join(b for b in bits if b != ver).upper()
+            name = ('CC %s %s' % (fam, ver)).strip()
         out.append((p.get('title') or f, p.get('creator') or 'Unknown',
                     p.get('creator_url') or '', name, p.get('license_url') or '',
                     p.get('landing') or '', p.get('source') or ''))

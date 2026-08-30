@@ -44,7 +44,7 @@ RULES = [
  # Last, so an exercise name never loses to a substring like the
  # 'progress' inside 'plank-progression'.
  (r'habit|motivation|consistency|stick-to|restart|drop-off|tracking|'
- r'schedule|weekly|routine|how-many-days|split|structure|4-week|six-week',
+ r'schedule|weekly|routine|how-many-days|split|structure',
                                                                    ['notebook', 'calendar', 'clock']),
 ]
 DEFAULT = ['home-exercise', 'home-mat', 'home-yoga', 'yoga-pose', 'home-dumbbell', 'living-room']

@@ -78,6 +78,54 @@ Both load from Google Fonts as variable faces — one request, roughly 150 KB
 over the wire once the browser picks its subset. The diagrams are drawn in
 Bricolage too, from the local font file, so images and page match.
 
+## Images
+
+Every photograph is sourced from [Openverse](https://openverse.org/) and
+Wikimedia Commons under licences that permit commercial use and modification,
+then cropped to two sizes: a `-hero.jpg` (1200×630, also the Open Graph share
+image) and a `-cover.jpg` (1200×900) used behind headlines on the front-page
+mosaic and category thumbnails.
+
+**Attribution is a licence condition, not a courtesy.** Images under CC-BY or
+CC-BY-SA name their photographer in a credit line under the picture and in
+`credits.html`, which is generated from the same manifest the images came from
+so it cannot drift. Re-run `python3 tools/build_credits_page.py` after changing
+any image. CC0 and public-domain images need no attribution but are listed too.
+
+### Why two sources
+
+Openverse matches on titles, which fails badly on everyday English words —
+"squat" returns squat lobsters, "push up" returns starfish, "dumbbell" returns
+the Dumbbell Nebula. Its queries here are long and specific for that reason, and
+a junk-title filter drops manuscripts, museum objects and clipart.
+
+Wikimedia Commons *categories* are curated by people, so `Category:Push-ups`
+actually contains push-ups. That is the only source that reliably covers
+exercise-specific imagery, so it fills the gaps Openverse cannot.
+
+### Rebuilding the set
+
+```
+python3 tools/fetch_photos.py      # Openverse sweep -> tools/photo-pool.json
+python3 tools/topup_photos.py      # top up thin categories, merges into the pool
+python3 tools/commons_photos.py    # Commons categories, merges into the pool
+python3 tools/apply_photos.py      # assign, crop to hero + cover
+python3 tools/photo_captions.py    # alt text and credit lines
+python3 tools/build_credits_page.py
+```
+
+The downloaded originals in `tools/photos/` are gitignored working files —
+every source URL lives in `photo-pool.json`, so `fetch_photos.py` can restore
+them.
+
+### What is still drawn rather than photographed
+
+Three in-content diagrams are still generated line art, because a photograph
+cannot do their job: the push-up form comparison (correct against two faults),
+the six-exercise session board, and the training-week grid. `tools/figures.py`
+and `tools/make_images.py` still build those, and can redraw the whole set if
+you ever want the diagrams back.
+
 ## The front page
 
 The site is laid out as a news magazine rather than a blog:
