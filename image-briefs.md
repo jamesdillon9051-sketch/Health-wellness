@@ -15,17 +15,22 @@ cobalt `#2B4EC7`, surveyor's yellow `#F5D547` used sparingly.
 **Total images needed: 103 unique files** across 101 pages. (The homepage reuses
 ten post heroes, so there are more `<img>` tags than files to source.)
 
-**Original diagrams are already in place — nothing here is outstanding.** Every
-path below holds a generated blueprint diagram: an exercise-manual figure, a form
-comparison, or a training-week grid, drawn by `tools/figures.py` and composed by
-`tools/compose.py`. All of it is original line art, so there is no licence to
-honour, no attribution to carry and no takedown risk. Regenerate the set any time
-with `python3 tools/make_images.py`.
+**Photographs are already in place — nothing here is outstanding.** Every path
+below holds a real photograph, sourced from [Openverse](https://openverse.org/)
+and Wikimedia Commons under licences that permit commercial use and
+modification, then cropped to size.
 
-The briefs below describe **optional** photography, kept in case you ever
-commission real photos. If you do, overwrite the file at the same path — the alt
-text describes the diagram, so update it too. `tools/make_placeholders.py` still
-exists if you want neutral placeholders back instead.
+**Attribution matters.** Some images are CC-BY or CC-BY-SA, which require naming
+the photographer — a licence condition, not a courtesy. `credits.html` lists
+every image, its photographer and its licence, and is generated from the same
+manifest the images came from. Re-run `python3 tools/build_credits_page.py` if
+you change any image.
+
+The briefs below describe the photography originally specified. They are kept as
+a reference for what each post ideally wants; if you commission or buy a better
+picture, overwrite the file at the same path and update the alt text.
+`tools/make_images.py` still exists and will redraw the diagram versions if you
+ever want them back.
 
 ---
 

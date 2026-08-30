@@ -8,3 +8,8 @@ tools/.domain
 # OS cruft that must not reach a deployed folder
 .DS_Store
 Thumbs.db
+
+# Downloaded source photographs. These are working files: full-size originals
+# that get cropped into assets/images. Re-fetch them any time with
+# `python3 tools/fetch_photos.py` — every URL is recorded in photo-pool.json.
+tools/photos/
