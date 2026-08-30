@@ -37,16 +37,16 @@ for f in sorted(glob.glob(os.path.join(R.ROOT, 'posts', '*.html'))):
 
 
 # --- pairing heuristic -------------------------------------------------------
-# Order matters: the frequency rule must be tested before the volume rule,
-# because frequency claims almost always mention volume being held equal.
+# Triage only: it flags claim/source pairs worth a human read, and it has both
+# false positives and blind spots. It cannot tell you a citation is correct.
+# Order matters — the frequency rule must precede the volume rule, because
+# frequency claims almost always mention volume being held equal.
 RULES = [
- (r'frequenc', ['Frequency']),
+ (r'frequen(c|t)', ['Frequency']),
  (r'weekly (training )?volume|dose-response|more (hard )?sets per week', ['Dose-response']),
- (r'sets taken to failure|stopped short|absolute failure',
-  ['to Failure or Not', 'Low- vs. High-Load']),
- (r'close to failure|proximity to failure|light(er)? loads?|low.load',
+ (r'to failure|stopped short|proximity to failure|light(er)? loads?|low.load',
   ['Low- vs. High-Load', 'to Failure or Not', 'Bayesian']),
- (r'adult (activity )?guidance|two or more days a week|activity guidelines',
+ (r'adult (activity )?guidance|two or more days a week|activity guidelines|WHO',
   ['World Health', 'NHS', 'Department of Health']),
  (r'sleep', ['Sleep Interventions']),
  (r'protein', ['protein']),
@@ -54,4 +54,6 @@ RULES = [
  (r'foam rolling|self-myofascial', ['self-myofascial']),
  (r'cardiorespiratory fitness', ['high-intensity interval']),
  (r'talk test', ['Mayo']),
+ (r'habit formation|automaticity|missed? (a single )?opportunit|66 days',
+  ['How are habits formed']),
 ]
